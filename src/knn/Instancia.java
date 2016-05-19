@@ -41,6 +41,10 @@ public class Instancia implements Iterable<Caracteristica> {
         return classe;
     }
 
+    public int getQuantidadeCaracteristicas() {
+        return caracteristicas.length;
+    }
+
     @Override
     public Iterator<Caracteristica> iterator() {
         return new Iterator<Caracteristica>() {
