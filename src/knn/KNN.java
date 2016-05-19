@@ -111,7 +111,16 @@ public class KNN {
 
         throw new UnsupportedOperationException();
     }
-
+    private int getIndexDoMaiorValor(int [] a){
+        int index = 0;
+        for (int i = 1; i < a.length; i++) {
+            if(a[i] > a[i-1]){
+                index = i;
+            }
+        }
+        return index;
+    }
+    
     public double getEuclidienDistance(double[] a, double[] b) throws Exception {
         if (a.length != b.length) {
             throw new Exception("Vetores de tamanhos diferentes");
