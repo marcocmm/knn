@@ -1,0 +1,103 @@
+\documentclass[12pt]{article}
+
+\usepackage{sbc-template}
+\usepackage{graphicx,url}
+\usepackage[brazil]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage{lscape}
+\usepackage{geometry}
+\usepackage{float}
+\usepackage{algorithm2e}
+\usepackage{multicol}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{makeidx}
+\usepackage{graphicx}
+\usepackage{lmodern}
+\usepackage{enumerate}
+\usepackage{latexsym}
+\usepackage{longtable}
+\usepackage[all]{xy}
+\usepackage{float}
+\usepackage{lscape}
+\usepackage{mathrsfs}
+\usepackage{fancyhdr}
+\usepackage{boxedminipage}
+\usepackage{enumitem}
+
+
+\sloppy
+
+\title{Implementação do algoritmo k-NN}
+
+\author{Marco Cezar Moreira de Mattos\inst{1}, Rômulo Manciola Meloca\inst{1}}
+
+\address{DACOM -- Universidade Tecnológica Federal do Paraná (UTFPR)\\
+  Caixa Postal 271 -- 87301-899 -- Campo Mourão -- PR -- Brazil
+  \email{\{marco.cmm,rmeloca\}@gmail.com}
+}
+
+\begin{document}
+
+	\maketitle
+
+	\begin{resumo}
+		Relata o procedimento tomado para construir um algoritmo A* que soluciona o problema 8-Puzzle e os testes feitos sobre ele.
+	\end{resumo}
+
+	\section{O Problema}\label{sec:problema}
+
+		O jogo 8-\textit{Puzzle}, aos olhos humanos possui uma solução, que embora não seja trivial, bastante intuitiva, dado seu objetivo. Consiste em um tabuleiro 3x3 sobre o qual deslizam oito peças enumeradas, onde os únicos movimentos possíveis para se atingir o objetivo são aqueles permitidos pelo buraco deixado pela nona peça. O objetivo do jogo é ordenar o tabuleiro.
+
+		O problema ocorre quando não há um agente dotado de intelecto para resolver o problema, não pela complexidade das verificações feitas para atingir-se o objetivo, mas sobre quais decisões devem ser tomadas em cada estado do problema, para atingir-se a solução do problema.
+
+		O espaço dos estados do 8-\textit{Puzzle} é $9!$ e a solução ótima tem classe NP-Completo, portanto, sortear o próximo estado ou expandir todas as possíveis soluções jamais poderia obter a solução em tempo plausível, o primeiro porque a aleatoriedade possui a mesma probabilidade de caminhar rumo a solução quanto de caminhar no sentido oposto, o segundo porque demandaria processamento e memória difíceis de serem obtidos.
+
+		Enfim, problemas cujos espaço dos estados fogem da possibilidade viável de computação dado a complexidade do algoritmo, são resolvíveis por meio do uso de inteligência artificial, que, muito embora não forneça a melhor solução, fornece uma solução muito boa em tempo muito bom (é claro que alguns tipos de problemas são melhores resolvidos com determinados tipos de algoritmos observando-se os determinados parâmetros que o fazem comportar-se bem).
+
+		Para o 8-\textit{Puzzle} é possível lançar-se mão desta categoria de algoritmos, contudo neste trabalho, utilizou-se o algoritmo A* que não é capaz de aprender (uma vez que armazenar resultados anteriores e observar se já foram visitados não é aprendizagem de máquina), mas que retorna um resultado muito bom em tempo viável dado sua capacidade de ignorar estados que afastam-se do objetivo e caminhar sempre rumo a ele.
+
+	\section{O algoritmo}\label{sec:algoritmo}
+
+
+		meses do ano
+
+		1200 instâncias para o conjunto de teste com 24 características
+		teste controlado uma vez que possuem respostas
+
+		3600 instâncias para o conjunto de treino com 24 características
+		possui resposta uma vez que é um algoritmo supervisionado, isto é
+
+
+		\begin{algorithm}[H]
+			\KwData{Instância de um Puzzle a ser resolvida.}
+			\KwResult{Lista do caminho percorrido para solucionar o puzzle.}
+			Insere a primeira instância na lista do caminho percorrido\;
+			\While{Puzzle não está resolvido}{
+				Obtém o última instância do caminho\;
+				Obtém os possíveis movimentos da instância\;
+				Calcula a heurística para cada possível movimento\;
+				Escolhe a instância que possui melhor heurística\;
+				Adiciona a instância ao caminho percorrido\;
+			}
+			\caption{Busca A* para resolver 8-Puzzle}
+		\end{algorithm}
+
+
+
+	\section{Resultados}\label{sec:resultados}
+
+	
+
+	\section{Considerações Finais}\label{sec:consideracoesFinais}
+
+		Considera-se, deste modo, que embora 78 passos seja um número alto de movimentos para solucionar o puzzle, sabe-se que o espaço de soluções possíveis é $9!$, isto é, 362880, de modo que obter a melhor solução custam recursos indisponíveis. Assim sendo, considera-se como aceitável que um algoritmo (ainda que não inteligente) resolva um problema dessa magnitude nessa quantidade de passos e com a bela velocidade de execução observada.
+
+		Sobretudo, ressalta-se que para os mais variados casos, como revelou o teste adicional de instâncias aleatórias, as heurísticas combinadas não puderam cobrir mais de 15\% dos casos, número bastante ruim, mas que justificado devido ao fato de tratar-se de um algoritmo de busca, que, portanto, é incapaz de aprender.
+
+	\section{Referências}\label{sec:referencias}
+
+		JÚNIOR, Nelson F., GUIMARÃES Frederico G. \textbf{Problema 8-Puzzle:} Análise da solução usando Backtracking e Algoritmos Genéticos.
+
+\end{document}
