@@ -104,12 +104,11 @@ public class KNN {
                     treeMap.remove(treeMap.firstEntry().getKey());
                     votos[Classe.toInt(firstEntry.getValue().getClasse())]++;
                 }
+                instanciaTeste.setClasse(Classe.parseInt(getIndexDoMaiorValor(votos)+1));
             }
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
-
-        throw new UnsupportedOperationException();
     }
 
     public double getEuclidienDistance(double[] a, double[] b) throws Exception {
