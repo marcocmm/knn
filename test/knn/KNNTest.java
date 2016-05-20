@@ -5,20 +5,32 @@
  */
 package knn;
 
-import org.junit.Test;
+import java.io.InputStream;
 import static org.junit.Assert.*;
+import org.junit.Test;
 
 /**
  *
  * @author marco
  */
 public class KNNTest {
-    
+
     public KNNTest() {
     }
 
     @Test
     public void testSomeMethod() {
+        InputStream treinoInputStream = getClass().getResourceAsStream("/conjuntos/treino.data");
+        InputStream testeInputStream = getClass().getResourceAsStream("/conjuntos/teste.data");
+        KNN knn;
+        try {
+            knn = new KNN(3, treinoInputStream, testeInputStream);
+            knn.classify();
+            knn.getMatrizConfusao().getAccuracy();
+        } catch (Exception ex) {
+            ex.printStackTrace();
+            fail();
+        }
     }
-    
+
 }

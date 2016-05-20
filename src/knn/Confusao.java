@@ -12,12 +12,27 @@ package knn;
 public class Confusao {
 
     private int[][] matriz;
+    private final int quantidadeInstancias;
 
-    public Confusao(int numeroClasses) {
+    public Confusao(int numeroClasses, int quantidadeInstancias) {
         this.matriz = new int[numeroClasses][numeroClasses];
+        this.quantidadeInstancias = quantidadeInstancias;
     }
 
-    public void registrarConfusao(Classe gave, Classe expected) {
-        matriz[Classe.toInt(gave) - 1][Classe.toInt(expected) - 1]++;
+    public int[][] getMatrizConfusao() {
+        return this.matriz;
     }
+
+    public void registrarConfusao(Classe expected, Classe actual) {
+        this.matriz[Classe.toInt(actual) - 1][Classe.toInt(expected) - 1]++;
+    }
+
+    public double getAccuracy() {
+        double sum = 0;
+        for (int i = 0; i < matriz.length; i++) {
+            sum += matriz[i][i];
+        }
+        return sum / quantidadeInstancias;
+    }
+
 }

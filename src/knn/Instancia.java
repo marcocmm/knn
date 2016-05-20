@@ -6,7 +6,6 @@
 package knn;
 
 import java.util.Iterator;
-import javax.swing.JFrame;
 
 /**
  *

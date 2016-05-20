@@ -9,11 +9,19 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.AbstractSet;
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 import java.util.TreeMap;
+import java.util.stream.Stream;
+import javafx.util.Pair;
 
 /**
  *
@@ -25,21 +33,30 @@ public class KNN {
     private final Conjunto treino;
     private final Conjunto teste;
     private Confusao confusao;
+    private Comparator<Pair<Double, Instancia>> comparator;
 
     public KNN(int k, Conjunto treino, Conjunto teste) {
         this.k = k;
         this.treino = (Conjunto) treino.clone();
         this.teste = (Conjunto) teste.clone();
-        this.confusao = new Confusao(treino.getQuantidadeCaracteristicas());
+        this.confusao = new Confusao(treino.getQuantidadeCaracteristicas(), treino.getQuantidadeInstancias());
+
+        this.comparator = new Comparator<Pair<Double, Instancia>>() {
+            @Override
+            public int compare(Pair<Double, Instancia> a, Pair<Double, Instancia> b) {
+                return Double.compare(a.getKey(), b.getKey());
+            }
+        };
     }
 
-    public KNN(int k, InputStream treinoInputStream, InputStream testeInputStream) {
+    public KNN(int k, InputStream treinoInputStream, InputStream testeInputStream) throws Exception {
         this.k = k;
         this.teste = parseInputStream(testeInputStream);
         this.treino = parseInputStream(treinoInputStream);
+        this.confusao = new Confusao(treino.getQuantidadeCaracteristicas(), treino.getQuantidadeInstancias());
     }
 
-    private Conjunto parseInputStream(InputStream inputStream) {
+    private Conjunto parseInputStream(InputStream inputStream) throws Exception {
         InputStreamReader inputStreamReader;
         BufferedReader bufferedReader;
         String strInstancia;
@@ -48,14 +65,16 @@ public class KNN {
         Caracteristica[] caracteristicas;
         Conjunto conjunto;
 
+        if (inputStream == null) {
+            throw new Exception("Arquivo não encontrado");
+        }
+
         conjunto = null;
-        strInstancia = "";
         instancias = new ArrayList();
         inputStreamReader = new InputStreamReader(inputStream);
         bufferedReader = new BufferedReader(inputStreamReader);
         try {
-            while (strInstancia != null) {
-                strInstancia = bufferedReader.readLine();
+            while ((strInstancia = bufferedReader.readLine()) != null) {
                 strCaracteristicas = strInstancia.replace(" ", "").split(",");
 
                 caracteristicas = new Caracteristica[strCaracteristicas.length - 1];
@@ -75,13 +94,12 @@ public class KNN {
     public void classify() {
         Iterator<Instancia> instanciasTreino;
         Iterator<Instancia> instanciasTeste;
-        TreeMap<Double, Instancia> treeMap;
-        Map.Entry<Double, Instancia> firstEntry;
         Instancia instanciaTeste;
         Instancia instanciaTreino;
+        List<Pair<Double, Instancia>> distancias;
         double distance;
         int[] votos;
-        Classe gaveClass;
+        Classe classifiedAs;
 
         instanciasTreino = this.treino.iterator();
         instanciasTeste = this.teste.iterator();
@@ -89,24 +107,24 @@ public class KNN {
         try {
             while (instanciasTeste.hasNext()) {
                 instanciaTeste = instanciasTeste.next();
-                treeMap = new TreeMap<>();
+                distancias = new ArrayList();
                 while (instanciasTreino.hasNext()) {
                     instanciaTreino = instanciasTreino.next();
                     distance = getEuclidienDistance(instanciaTeste, instanciaTreino);
-                    treeMap.put(distance, instanciaTreino);
+                    distancias.add(new Pair(distance, instanciaTreino));
                 }
+                Collections.sort(distancias, this.comparator);
                 votos = new int[12];
                 for (int i = 0; i < k; i++) {
-                    firstEntry = treeMap.firstEntry();
-                    treeMap.remove(treeMap.firstEntry().getKey());
-                    votos[Classe.toInt(firstEntry.getValue().getClasse())]++;
+                    votos[Classe.toInt(distancias.get(0).getValue().getClasse()) - 1]++;
+                    distancias.remove(0);
                 }
-                gaveClass = Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
-                this.confusao.registrarConfusao(instanciaTeste.getClasse(), gaveClass);
-                instanciaTeste.setClasse(gaveClass);
+                classifiedAs = Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
+                this.confusao.registrarConfusao(instanciaTeste.getClasse(), classifiedAs);
+                instanciaTeste.setClasse(classifiedAs);
             }
         } catch (Exception ex) {
-            System.err.println(ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
@@ -118,6 +136,10 @@ public class KNN {
             }
         }
         return index;
+    }
+
+    public Confusao getMatrizConfusao() {
+        return confusao;
     }
 
     public double getEuclidienDistance(double[] a, double[] b) throws Exception {

@@ -6,6 +6,8 @@
 package knn;
 
 import java.util.Iterator;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -14,9 +16,20 @@ import java.util.Iterator;
 public class Conjunto implements Iterable<Instancia> {
 
     private final Instancia[] instancias;
+    private final int quantidadeCaracteristicas;
 
-    public Conjunto(Instancia[] instancias) {
+    public Conjunto(Instancia[] instancias) throws Exception {
+        if (instancias == null) {
+            throw new Exception("Instâncias cannot be null");
+        }
+        if (instancias.length == 0) {
+            throw new Exception("Instâncias must be at least one");
+        }
+        if (instancias[0] == null) {
+            throw new Exception("Características cannot be null");
+        }
         this.instancias = new Instancia[instancias.length];
+        this.quantidadeCaracteristicas = instancias[0].getQuantidadeCaracteristicas();
         for (int i = 0; i < instancias.length; i++) {
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
@@ -27,12 +40,13 @@ public class Conjunto implements Iterable<Instancia> {
     }
 
     public int getQuantidadeCaracteristicas() {
-        return instancias[0].getQuantidadeCaracteristicas();
+        return this.quantidadeCaracteristicas;
     }
 
     @Deprecated
     private Conjunto(int quantidadeInstancias, int quantidadeCaracteristicas) {
         this.instancias = new Instancia[quantidadeInstancias];
+        this.quantidadeCaracteristicas = quantidadeCaracteristicas;
         for (int i = 0; i < this.instancias.length; i++) {
             this.instancias[i] = new Instancia(new Caracteristica[quantidadeCaracteristicas]);
         }
@@ -58,7 +72,12 @@ public class Conjunto implements Iterable<Instancia> {
 
     @Override
     protected Object clone() {
-        return new Conjunto(this.instancias);
+        try {
+            return new Conjunto(this.instancias);
+        } catch (Exception ex) {
+            Logger.getLogger(Conjunto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
     }
 
 }
