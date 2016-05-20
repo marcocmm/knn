@@ -8,14 +8,15 @@ package knn;
 import java.util.Iterator;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import java.util.Random;
 
 /**
  *
  * @author romulo
  */
-public class Conjunto implements Iterable<Instancia> {
+public final class Conjunto implements Iterable<Instancia> {
 
-    private final Instancia[] instancias;
+    private Instancia[] instancias;
     private final int quantidadeCaracteristicas;
 
     public Conjunto(Instancia[] instancias) throws Exception {
@@ -33,6 +34,79 @@ public class Conjunto implements Iterable<Instancia> {
         for (int i = 0; i < instancias.length; i++) {
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
+    }
+
+    public Conjunto(Instancia[] instancias, int porcentagem) {
+        this.instancias = new Instancia[instancias.length];
+        this.quantidadeCaracteristicas = instancias[0].getQuantidadeCaracteristicas();
+        for (int i = 0; i < instancias.length; i++) {
+            this.instancias[i] = (Instancia) instancias[i].clone();
+        }
+        normalizarMinMax();
+    }
+
+    public void normalizarMinMax() {
+        Caracteristica[][] listMinMax = new Caracteristica[2][instancias[0].getQuantidadeCaracteristicas()];
+        int index = 0;
+        for (Caracteristica caracteristica : instancias[0]) {
+            listMinMax[0][index] = caracteristica;
+            listMinMax[1][index] = caracteristica;
+            index++;
+        }
+
+        for (Instancia instancia : this) {
+            index = 0;
+            for (Caracteristica caracteristica : instancia) {
+                if (caracteristica.getValor() < listMinMax[0][index].getValor()) {
+                    listMinMax[0][index] = caracteristica;
+                } else if (caracteristica.getValor() > listMinMax[1][index].getValor()) {
+                    listMinMax[1][index] = caracteristica;
+                }
+                index++;
+            }
+        }
+        double novoValor;
+        for (Instancia instancia : this) {
+            index = 0;
+            for (Caracteristica caracteristica : instancia) {
+                novoValor = ((caracteristica.getValor() - listMinMax[0][index].getValor()) / (listMinMax[1][index].getValor() - listMinMax[0][index].getValor()));
+                caracteristica.setValor(novoValor);
+                index++;
+            }
+        }
+    }
+
+    public void separarDados(int porcentagem) {
+        int novoNumeroInstacias;
+        Random gerador = new Random();
+        int numeroInstancia;
+
+        if (porcentagem == 25) {
+            novoNumeroInstacias = this.getQuantidadeInstancias() / 4;
+            for (int i = 0; i < novoNumeroInstacias; i++) {
+                numeroInstancia = gerador.nextInt(novoNumeroInstacias);
+                novoNumeroInstacias--;
+                excluirInstacia(numeroInstancia);
+            }
+        } else if (porcentagem == 50) {
+            novoNumeroInstacias = this.getQuantidadeInstancias() / 2;
+            for (int i = 0; i < novoNumeroInstacias; i++) {
+                numeroInstancia = gerador.nextInt(novoNumeroInstacias);
+                novoNumeroInstacias--;
+                excluirInstacia(numeroInstancia);
+            }
+        }
+    }
+
+    public void excluirInstacia(int index) {
+        Instancia[] novaListaInstancias = new Instancia[this.getQuantidadeInstancias() - 1];
+        instancias[index] = instancias[this.getQuantidadeInstancias()];
+        int contador = 0;
+        for (Instancia ins : this.instancias) {
+            novaListaInstancias[contador] = ins;
+            contador++;
+        }
+        setInstancias(novaListaInstancias);
     }
 
     public int getQuantidadeInstancias() {
@@ -78,6 +152,10 @@ public class Conjunto implements Iterable<Instancia> {
             Logger.getLogger(Conjunto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
+    }
+
+    public void setInstancias(Instancia[] instancias) {
+        this.instancias = instancias;
     }
 
 }

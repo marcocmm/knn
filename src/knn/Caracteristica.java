@@ -11,7 +11,7 @@ package knn;
  */
 public class Caracteristica {
 
-    private final double valor;
+    private double valor;
 
     public Caracteristica(double valor) {
         this.valor = valor;
@@ -24,6 +24,10 @@ public class Caracteristica {
     @Override
     public Object clone() {
         return new Caracteristica(this.valor);
+    }
+
+    public void setValor(double valor) {
+        this.valor = valor;
     }
 
 }
