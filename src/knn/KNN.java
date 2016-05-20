@@ -64,7 +64,7 @@ public class KNN {
                 }
                 instancias.add(new Instancia(caracteristicas, Classe.parseClasse(strCaracteristicas[strCaracteristicas.length - 1])));
             }
-            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]));
+            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]),100);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
