@@ -10,16 +10,10 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collections;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
-import java.util.Set;
 import java.util.TreeMap;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -30,11 +24,13 @@ public class KNN {
     private final int k;
     private final Conjunto treino;
     private final Conjunto teste;
+    private Confusao confusao;
 
     public KNN(int k, Conjunto treino, Conjunto teste) {
         this.k = k;
         this.treino = (Conjunto) treino.clone();
         this.teste = (Conjunto) teste.clone();
+        this.confusao = new Confusao(treino.getQuantidadeCaracteristicas());
     }
 
     public KNN(int k, InputStream treinoInputStream, InputStream testeInputStream) {
@@ -85,6 +81,7 @@ public class KNN {
         Instancia instanciaTreino;
         double distance;
         int[] votos;
+        Classe gaveClass;
 
         instanciasTreino = this.treino.iterator();
         instanciasTeste = this.teste.iterator();
@@ -104,22 +101,25 @@ public class KNN {
                     treeMap.remove(treeMap.firstEntry().getKey());
                     votos[Classe.toInt(firstEntry.getValue().getClasse())]++;
                 }
-                instanciaTeste.setClasse(Classe.parseInt(getIndexDoMaiorValor(votos)+1));
+                gaveClass = Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
+                this.confusao.registrarConfusao(instanciaTeste.getClasse(), gaveClass);
+                instanciaTeste.setClasse(gaveClass);
             }
         } catch (Exception ex) {
             System.err.println(ex.getMessage());
         }
     }
-    private int getIndexDoMaiorValor(int [] a){
+
+    private int getIndexDoMaiorValor(int[] a) {
         int index = 0;
         for (int i = 1; i < a.length; i++) {
-            if(a[i] > a[i-1]){
+            if (a[i] > a[i - 1]) {
                 index = i;
             }
         }
         return index;
     }
-    
+
     public double getEuclidienDistance(double[] a, double[] b) throws Exception {
         if (a.length != b.length) {
             throw new Exception("Vetores de tamanhos diferentes");

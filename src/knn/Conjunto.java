@@ -22,6 +22,14 @@ public class Conjunto implements Iterable<Instancia> {
         }
     }
 
+    public int getQuantidadeInstancias() {
+        return instancias.length;
+    }
+
+    public int getQuantidadeCaracteristicas() {
+        return instancias[0].getQuantidadeCaracteristicas();
+    }
+
     @Deprecated
     private Conjunto(int quantidadeInstancias, int quantidadeCaracteristicas) {
         this.instancias = new Instancia[quantidadeInstancias];
