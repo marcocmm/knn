@@ -26,7 +26,7 @@ public class KNNTest {
         try {
             knn = new KNN(3, treinoInputStream, testeInputStream);
             knn.classify();
-            knn.getMatrizConfusao().getAccuracy();
+            System.out.println(knn.getMatrizConfusao().getAccuracy());
         } catch (Exception ex) {
             ex.printStackTrace();
             fail();

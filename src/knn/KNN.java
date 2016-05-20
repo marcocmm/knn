@@ -9,19 +9,10 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.AbstractSet;
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collections;
-import java.util.Comparator;
-import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
-import java.util.TreeMap;
-import java.util.stream.Stream;
-import javafx.util.Pair;
 
 /**
  *
@@ -32,21 +23,13 @@ public class KNN {
     private final int k;
     private final Conjunto treino;
     private final Conjunto teste;
-    private Confusao confusao;
-    private Comparator<Pair<Double, Instancia>> comparator;
+    private final Confusao confusao;
 
     public KNN(int k, Conjunto treino, Conjunto teste) {
         this.k = k;
         this.treino = (Conjunto) treino.clone();
         this.teste = (Conjunto) teste.clone();
         this.confusao = new Confusao(treino.getQuantidadeCaracteristicas(), treino.getQuantidadeInstancias());
-
-        this.comparator = new Comparator<Pair<Double, Instancia>>() {
-            @Override
-            public int compare(Pair<Double, Instancia> a, Pair<Double, Instancia> b) {
-                return Double.compare(a.getKey(), b.getKey());
-            }
-        };
     }
 
     public KNN(int k, InputStream treinoInputStream, InputStream testeInputStream) throws Exception {
@@ -83,7 +66,7 @@ public class KNN {
                 }
                 instancias.add(new Instancia(caracteristicas, Classe.parseClasse(strCaracteristicas[strCaracteristicas.length - 1])));
             }
-            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]),100);
+            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]), 100);
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -96,27 +79,28 @@ public class KNN {
         Iterator<Instancia> instanciasTeste;
         Instancia instanciaTeste;
         Instancia instanciaTreino;
-        List<Pair<Double, Instancia>> distancias;
-        double distance;
+        List<Distancia> distancias;
+        Distancia distancia;
         int[] votos;
         Classe classifiedAs;
 
-        instanciasTreino = this.treino.iterator();
         instanciasTeste = this.teste.iterator();
 
         try {
             while (instanciasTeste.hasNext()) {
                 instanciaTeste = instanciasTeste.next();
+                instanciasTreino = this.treino.iterator();
                 distancias = new ArrayList();
                 while (instanciasTreino.hasNext()) {
                     instanciaTreino = instanciasTreino.next();
-                    distance = getEuclidienDistance(instanciaTeste, instanciaTreino);
-                    distancias.add(new Pair(distance, instanciaTreino));
+                    distancia = new Distancia(instanciaTeste, instanciaTreino);
+                    distancia.calculateEuclidienDistance();
+                    distancias.add(distancia);
                 }
-                Collections.sort(distancias, this.comparator);
+                Collections.sort(distancias);
                 votos = new int[12];
                 for (int i = 0; i < k; i++) {
-                    votos[Classe.toInt(distancias.get(0).getValue().getClasse()) - 1]++;
+                    votos[Classe.toInt(distancias.get(0).getTo().getClasse()) - 1]++;
                     distancias.remove(0);
                 }
                 classifiedAs = Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
@@ -141,38 +125,4 @@ public class KNN {
     public Confusao getMatrizConfusao() {
         return confusao;
     }
-
-    public double getEuclidienDistance(double[] a, double[] b) throws Exception {
-        if (a.length != b.length) {
-            throw new Exception("Vetores de tamanhos diferentes");
-        }
-        int sum = 0;
-        for (int i = 0; i < a.length; i++) {
-            sum += Math.pow(a[i] - b[i], 2);
-
-        }
-        return Math.sqrt(sum);
-    }
-
-    public double getEuclidienDistance(Instancia a, Instancia b) throws Exception {
-        Iterator<Caracteristica> iteratorA;
-        Iterator<Caracteristica> iteratorB;
-        Caracteristica caracteristicaA;
-        Caracteristica caracteristicaB;
-
-        iteratorA = a.iterator();
-        iteratorB = b.iterator();
-
-        if (a.getQuantidadeCaracteristicas() != b.getQuantidadeCaracteristicas()) {
-            throw new Exception("Vetores de tamanhos diferentes");
-        }
-        int sum = 0;
-        while (iteratorA.hasNext() && iteratorB.hasNext()) {
-            caracteristicaA = iteratorA.next();
-            caracteristicaB = iteratorB.next();
-            sum += Math.pow(caracteristicaA.getValor() - caracteristicaB.getValor(), 2);
-        }
-        return Math.sqrt(sum);
-    }
-
 }
