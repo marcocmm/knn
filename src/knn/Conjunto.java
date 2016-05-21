@@ -116,7 +116,7 @@ public final class Conjunto implements Iterable<Instancia> {
     }
 
     public void setInstancias(Instancia[] instancias) {
-        this.instancias = instancias;
+        this.instancias = instancias.clone();
     }
 
     public int getQuantidadeClasses() {

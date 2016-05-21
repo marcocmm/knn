@@ -40,13 +40,13 @@ public class KNN {
     public KNN(int k, InputStream treinoInputStream, int porcentagem) throws Exception {
         this.k = k;
         this.treino = parseInputStream(treinoInputStream);
-        this.treino.print();
+//        this.treino.print();
         this.treino.separarInstancias(porcentagem);
-        this.treino.normalizarMinMax();
-        System.out.println();
-        System.out.println();
-        System.out.println();
-        this.treino.print();
+//        this.treino.normalizarMinMax();
+//        System.out.println();
+//        System.out.println();
+//        System.out.println();
+//        this.treino.print();
     }
 
     public void setConjuntoTeste(Conjunto teste) {
@@ -118,6 +118,9 @@ public class KNN {
                 }
                 Collections.sort(distancias);
                 votos = new int[this.treino.getQuantidadeClasses()];
+                if (distancias.size() <= k) {
+                    throw new Exception("Vetor de distâncias não preenchido");
+                }
                 for (int i = 0; i < k; i++) {
                     votos[Classe.toInt(distancias.get(0).getTo().getClasse()) - 1]++;
                     distancias.remove(0);
