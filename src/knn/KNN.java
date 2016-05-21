@@ -40,13 +40,8 @@ public class KNN {
     public KNN(int k, InputStream treinoInputStream, int porcentagem) throws Exception {
         this.k = k;
         this.treino = parseInputStream(treinoInputStream);
-//        this.treino.print();
         this.treino.separarInstancias(porcentagem);
 //        this.treino.normalizarMinMax();
-//        System.out.println();
-//        System.out.println();
-//        System.out.println();
-//        this.treino.print();
     }
 
     public void setConjuntoTeste(Conjunto teste) {

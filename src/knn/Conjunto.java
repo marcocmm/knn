@@ -64,7 +64,7 @@ public final class Conjunto implements Iterable<Instancia> {
         for (Instancia instancia : this) {
             index = 0;
             for (Caracteristica caracteristica : instancia) {
-                if (caracteristica.getValor() < listMinMax[0][index].getValor()) {
+                if (((caracteristica.getValor() < listMinMax[0][index].getValor()) && (caracteristica.getValor() != 0)) ||(listMinMax[0][index].getValor() == 0)) {
                     listMinMax[0][index] = caracteristica;
                 } else if (caracteristica.getValor() > listMinMax[1][index].getValor()) {
                     listMinMax[1][index] = caracteristica;
@@ -76,7 +76,8 @@ public final class Conjunto implements Iterable<Instancia> {
         for (Instancia instancia : this) {
             index = 0;
             for (Caracteristica caracteristica : instancia) {
-                novoValor = ((caracteristica.getValor() - listMinMax[0][index].getValor()) / (listMinMax[1][index].getValor() - listMinMax[0][index].getValor()));
+                novoValor = ((caracteristica.getValor() - listMinMax[0][index].getValor())
+                        / (listMinMax[1][index].getValor() - listMinMax[0][index].getValor()));
                 caracteristica.setValor(novoValor);
                 index++;
             }
@@ -88,7 +89,7 @@ public final class Conjunto implements Iterable<Instancia> {
         Random gerador = new Random();
         int numeroInstancia;
 
-        instanciasASeremExcluidas = (int) (this.getQuantidadeInstancias() * (1 - (porcentagem / 100)));
+        instanciasASeremExcluidas = (int) (this.getQuantidadeInstancias() * (1.0 - (porcentagem / 100.0)));
         for (int i = 0; i < instanciasASeremExcluidas; i++) {
             numeroInstancia = gerador.nextInt(getQuantidadeInstancias());
             excluirInstancia(numeroInstancia);
@@ -99,8 +100,8 @@ public final class Conjunto implements Iterable<Instancia> {
         Instancia[] novaListaInstancias = new Instancia[this.getQuantidadeInstancias() - 1];
         int contador = 0;
         for (int i = 0; i < this.instancias.length; i++) {
-            if (contador != index) {
-                novaListaInstancias[contador] = instancias[i];
+            if (index != i) {
+                novaListaInstancias[contador] = (Instancia) instancias[i].clone();
                 contador++;
             }
         }
