@@ -42,7 +42,8 @@ public final class Conjunto implements Iterable<Instancia> {
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
         separarDados(porcentagem);
-        normalizarMinMax();
+        System.out.println("Qtd instancias: " + getQuantidadeInstancias());
+//        normalizarMinMax();
     }
 
     @Deprecated
@@ -91,17 +92,15 @@ public final class Conjunto implements Iterable<Instancia> {
         int numeroInstancia;
 
         if (porcentagem == 25) {
-            novoNumeroInstacias = this.getQuantidadeInstancias() / 4;
+            novoNumeroInstacias = (this.getQuantidadeInstancias() / 4)*3;
             for (int i = 0; i < novoNumeroInstacias; i++) {
-                numeroInstancia = gerador.nextInt(novoNumeroInstacias);
-                novoNumeroInstacias--;
+                numeroInstancia = gerador.nextInt(getQuantidadeInstancias());
                 excluirInstancia(numeroInstancia);
             }
         } else if (porcentagem == 50) {
             novoNumeroInstacias = this.getQuantidadeInstancias() / 2;
             for (int i = 0; i < novoNumeroInstacias; i++) {
-                numeroInstancia = gerador.nextInt(novoNumeroInstacias);
-                novoNumeroInstacias--;
+                numeroInstancia = gerador.nextInt(getQuantidadeInstancias());
                 excluirInstancia(numeroInstancia);
             }
         }
@@ -109,11 +108,12 @@ public final class Conjunto implements Iterable<Instancia> {
 
     public void excluirInstancia(int index) {
         Instancia[] novaListaInstancias = new Instancia[this.getQuantidadeInstancias() - 1];
-        instancias[index] = instancias[this.getQuantidadeInstancias()];
         int contador = 0;
         for (Instancia ins : this.instancias) {
-            novaListaInstancias[contador] = ins;
-            contador++;
+            if (!(contador == index)) {
+                novaListaInstancias[contador] = ins;
+                contador++;
+            }
         }
         setInstancias(novaListaInstancias);
     }
