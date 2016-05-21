@@ -98,9 +98,9 @@ public final class Conjunto implements Iterable<Instancia> {
     private void excluirInstancia(int index) {
         Instancia[] novaListaInstancias = new Instancia[this.getQuantidadeInstancias() - 1];
         int contador = 0;
-        for (Instancia instancia : this.instancias) {
+        for (int i = 0; i < this.instancias.length; i++) {
             if (contador != index) {
-                novaListaInstancias[contador] = instancia;
+                novaListaInstancias[contador] = instancias[i];
                 contador++;
             }
         }
