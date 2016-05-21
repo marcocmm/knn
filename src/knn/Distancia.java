@@ -47,7 +47,7 @@ public class Distancia implements Comparable<Distancia> {
         if (this.from.getQuantidadeCaracteristicas() != this.to.getQuantidadeCaracteristicas()) {
             throw new Exception("Vetores de tamanhos diferentes");
         }
-        int sum = 0;
+        double sum = 0;
         while (iteratorA.hasNext() && iteratorB.hasNext()) {
             caracteristicaA = iteratorA.next();
             caracteristicaB = iteratorB.next();

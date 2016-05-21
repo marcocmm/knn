@@ -22,21 +22,25 @@ public class KNN {
 
     private final int k;
     private final Conjunto treino;
-    private final Conjunto teste;
-    private final Confusao confusao;
+    private Conjunto teste;
+    private Confusao confusao;
 
-    public KNN(int k, Conjunto treino, Conjunto teste) {
+    public KNN(int k, Conjunto treino) {
         this.k = k;
         this.treino = (Conjunto) treino.clone();
-        this.teste = (Conjunto) teste.clone();
-        this.confusao = new Confusao(treino.getQuantidadeCaracteristicas(), treino.getQuantidadeInstancias());
     }
 
-    public KNN(int k, InputStream treinoInputStream, InputStream testeInputStream) throws Exception {
+    public KNN(int k, InputStream treinoInputStream) throws Exception {
         this.k = k;
-        this.teste = parseInputStream(testeInputStream);
         this.treino = parseInputStream(treinoInputStream);
-        this.confusao = new Confusao(treino.getQuantidadeCaracteristicas(), treino.getQuantidadeInstancias());
+    }
+
+    public void setConjuntoTeste(Conjunto teste) {
+        this.teste = (Conjunto) teste.clone();
+    }
+
+    public void setConjuntoTeste(InputStream testeInputStream) throws Exception {
+        this.teste = parseInputStream(testeInputStream);
     }
 
     private Conjunto parseInputStream(InputStream inputStream) throws Exception {
@@ -66,7 +70,7 @@ public class KNN {
                 }
                 instancias.add(new Instancia(caracteristicas, Classe.parseClasse(strCaracteristicas[strCaracteristicas.length - 1])));
             }
-            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]), 100);
+            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
@@ -84,6 +88,7 @@ public class KNN {
         int[] votos;
         Classe classifiedAs;
 
+        this.confusao = new Confusao(this.treino.getQuantidadeClasses(), this.teste.getQuantidadeInstancias());
         instanciasTeste = this.teste.iterator();
 
         try {
@@ -98,7 +103,7 @@ public class KNN {
                     distancias.add(distancia);
                 }
                 Collections.sort(distancias);
-                votos = new int[12];
+                votos = new int[this.treino.getQuantidadeClasses()];
                 for (int i = 0; i < k; i++) {
                     votos[Classe.toInt(distancias.get(0).getTo().getClasse()) - 1]++;
                     distancias.remove(0);

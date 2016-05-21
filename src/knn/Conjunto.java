@@ -5,7 +5,9 @@
  */
 package knn;
 
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import java.util.Random;
@@ -18,6 +20,7 @@ public final class Conjunto implements Iterable<Instancia> {
 
     private Instancia[] instancias;
     private final int quantidadeCaracteristicas;
+    private List<Classe> classes;
 
     public Conjunto(Instancia[] instancias) throws Exception {
         if (instancias == null) {
@@ -31,18 +34,31 @@ public final class Conjunto implements Iterable<Instancia> {
         }
         this.instancias = new Instancia[instancias.length];
         this.quantidadeCaracteristicas = instancias[0].getQuantidadeCaracteristicas();
+        this.classes = new ArrayList<>();
         for (int i = 0; i < instancias.length; i++) {
+            if (!this.classes.contains(instancias[i].getClasse())) {
+                this.classes.add(instancias[i].getClasse());
+            }
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
     }
 
-    public Conjunto(Instancia[] instancias, int porcentagem) {
+    private Conjunto(Instancia[] instancias, int porcentagem) {
         this.instancias = new Instancia[instancias.length];
         this.quantidadeCaracteristicas = instancias[0].getQuantidadeCaracteristicas();
         for (int i = 0; i < instancias.length; i++) {
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
         normalizarMinMax();
+    }
+
+    @Deprecated
+    private Conjunto(int quantidadeInstancias, int quantidadeCaracteristicas) {
+        this.instancias = new Instancia[quantidadeInstancias];
+        this.quantidadeCaracteristicas = quantidadeCaracteristicas;
+        for (int i = 0; i < this.instancias.length; i++) {
+            this.instancias[i] = new Instancia(new Caracteristica[quantidadeCaracteristicas]);
+        }
     }
 
     public void normalizarMinMax() {
@@ -117,13 +133,12 @@ public final class Conjunto implements Iterable<Instancia> {
         return this.quantidadeCaracteristicas;
     }
 
-    @Deprecated
-    private Conjunto(int quantidadeInstancias, int quantidadeCaracteristicas) {
-        this.instancias = new Instancia[quantidadeInstancias];
-        this.quantidadeCaracteristicas = quantidadeCaracteristicas;
-        for (int i = 0; i < this.instancias.length; i++) {
-            this.instancias[i] = new Instancia(new Caracteristica[quantidadeCaracteristicas]);
-        }
+    public void setInstancias(Instancia[] instancias) {
+        this.instancias = instancias;
+    }
+
+    public int getQuantidadeClasses() {
+        return this.classes.size() + 1;
     }
 
     @Override
@@ -152,10 +167,6 @@ public final class Conjunto implements Iterable<Instancia> {
             Logger.getLogger(Conjunto.class.getName()).log(Level.SEVERE, null, ex);
         }
         return null;
-    }
-
-    public void setInstancias(Instancia[] instancias) {
-        this.instancias = instancias;
     }
 
 }

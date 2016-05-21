@@ -35,4 +35,13 @@ public class Confusao {
         return sum / quantidadeInstancias;
     }
 
+    public void print() {
+        for (int[] line : matriz) {
+            for (int i : line) {
+                System.out.print(i + "\t");
+            }
+            System.out.println();
+        }
+    }
+
 }
