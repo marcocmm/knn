@@ -22,7 +22,7 @@ public final class Conjunto implements Iterable<Instancia> {
     private final int quantidadeCaracteristicas;
     private List<Classe> classes;
 
-    public Conjunto(Instancia[] instancias) throws Exception {
+    public Conjunto(Instancia[] instancias, int porcentagem) throws Exception {
         if (instancias == null) {
             throw new Exception("Instâncias cannot be null");
         }
@@ -41,14 +41,7 @@ public final class Conjunto implements Iterable<Instancia> {
             }
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
-    }
-
-    private Conjunto(Instancia[] instancias, int porcentagem) {
-        this.instancias = new Instancia[instancias.length];
-        this.quantidadeCaracteristicas = instancias[0].getQuantidadeCaracteristicas();
-        for (int i = 0; i < instancias.length; i++) {
-            this.instancias[i] = (Instancia) instancias[i].clone();
-        }
+        separarDados(porcentagem);
         normalizarMinMax();
     }
 
@@ -162,7 +155,7 @@ public final class Conjunto implements Iterable<Instancia> {
     @Override
     protected Object clone() {
         try {
-            return new Conjunto(this.instancias);
+            return new Conjunto(this.instancias, 100);
         } catch (Exception ex) {
             Logger.getLogger(Conjunto.class.getName()).log(Level.SEVERE, null, ex);
         }
