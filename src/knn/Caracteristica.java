@@ -25,6 +25,10 @@ public class Caracteristica {
         this.valor = valor;
     }
 
+    public void print() {
+        System.out.print(this.valor + " ");
+    }
+
     @Override
     public Object clone() {
         return new Caracteristica(this.valor);

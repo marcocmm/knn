@@ -44,6 +44,13 @@ public class Instancia implements Iterable<Caracteristica> {
         return caracteristicas.length;
     }
 
+    public void print() {
+        for (Caracteristica caracteristica : this) {
+            caracteristica.print();
+        }
+        System.out.println();
+    }
+
     @Override
     public Iterator<Caracteristica> iterator() {
         return new Iterator<Caracteristica>() {

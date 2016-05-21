@@ -22,7 +22,7 @@ public final class Conjunto implements Iterable<Instancia> {
     private final int quantidadeCaracteristicas;
     private List<Classe> classes;
 
-    public Conjunto(Instancia[] instancias, int porcentagem) throws Exception {
+    public Conjunto(Instancia[] instancias) throws Exception {
         if (instancias == null) {
             throw new Exception("Instâncias cannot be null");
         }
@@ -41,9 +41,6 @@ public final class Conjunto implements Iterable<Instancia> {
             }
             this.instancias[i] = (Instancia) instancias[i].clone();
         }
-        separarDados(porcentagem);
-        System.out.println("Qtd instancias: " + getQuantidadeInstancias());
-//        normalizarMinMax();
     }
 
     @Deprecated
@@ -56,7 +53,7 @@ public final class Conjunto implements Iterable<Instancia> {
     }
 
     public void normalizarMinMax() {
-        Caracteristica[][] listMinMax = new Caracteristica[2][instancias[0].getQuantidadeCaracteristicas()];
+        Caracteristica[][] listMinMax = new Caracteristica[2][getQuantidadeCaracteristicas()];
         int index = 0;
         for (Caracteristica caracteristica : instancias[0]) {
             listMinMax[0][index] = caracteristica;
@@ -86,32 +83,24 @@ public final class Conjunto implements Iterable<Instancia> {
         }
     }
 
-    public void separarDados(int porcentagem) {
-        int novoNumeroInstacias;
+    public void separarInstancias(int porcentagem) {
+        int instanciasASeremExcluidas;
         Random gerador = new Random();
         int numeroInstancia;
 
-        if (porcentagem == 25) {
-            novoNumeroInstacias = (this.getQuantidadeInstancias() / 4)*3;
-            for (int i = 0; i < novoNumeroInstacias; i++) {
-                numeroInstancia = gerador.nextInt(getQuantidadeInstancias());
-                excluirInstancia(numeroInstancia);
-            }
-        } else if (porcentagem == 50) {
-            novoNumeroInstacias = this.getQuantidadeInstancias() / 2;
-            for (int i = 0; i < novoNumeroInstacias; i++) {
-                numeroInstancia = gerador.nextInt(getQuantidadeInstancias());
-                excluirInstancia(numeroInstancia);
-            }
+        instanciasASeremExcluidas = (int) (this.getQuantidadeInstancias() * (1 - (porcentagem / 100)));
+        for (int i = 0; i < instanciasASeremExcluidas; i++) {
+            numeroInstancia = gerador.nextInt(getQuantidadeInstancias());
+            excluirInstancia(numeroInstancia);
         }
     }
 
-    public void excluirInstancia(int index) {
+    private void excluirInstancia(int index) {
         Instancia[] novaListaInstancias = new Instancia[this.getQuantidadeInstancias() - 1];
         int contador = 0;
-        for (Instancia ins : this.instancias) {
-            if (!(contador == index)) {
-                novaListaInstancias[contador] = ins;
+        for (Instancia instancia : this.instancias) {
+            if (contador != index) {
+                novaListaInstancias[contador] = instancia;
                 contador++;
             }
         }
@@ -132,6 +121,13 @@ public final class Conjunto implements Iterable<Instancia> {
 
     public int getQuantidadeClasses() {
         return this.classes.size() + 1;
+    }
+
+    public void print() {
+        for (int i = 0; i < 5; i++) {
+            Instancia instancia = instancias[i];
+            instancia.print();
+        }
     }
 
     @Override
@@ -155,7 +151,7 @@ public final class Conjunto implements Iterable<Instancia> {
     @Override
     protected Object clone() {
         try {
-            return new Conjunto(this.instancias, 100);
+            return new Conjunto(this.instancias);
         } catch (Exception ex) {
             Logger.getLogger(Conjunto.class.getName()).log(Level.SEVERE, null, ex);
         }

@@ -25,14 +25,28 @@ public class KNN {
     private Conjunto teste;
     private Confusao confusao;
 
-    public KNN(int k, Conjunto treino) {
+    public KNN(int k, Conjunto treino, int porcentagem) {
         this.k = k;
         this.treino = (Conjunto) treino.clone();
+        this.treino.separarInstancias(porcentagem);
+        this.treino.normalizarMinMax();
     }
 
     public KNN(int k, InputStream treinoInputStream) throws Exception {
         this.k = k;
         this.treino = parseInputStream(treinoInputStream);
+    }
+
+    public KNN(int k, InputStream treinoInputStream, int porcentagem) throws Exception {
+        this.k = k;
+        this.treino = parseInputStream(treinoInputStream);
+        this.treino.print();
+        this.treino.separarInstancias(porcentagem);
+        this.treino.normalizarMinMax();
+        System.out.println();
+        System.out.println();
+        System.out.println();
+        this.treino.print();
     }
 
     public void setConjuntoTeste(Conjunto teste) {
@@ -70,7 +84,7 @@ public class KNN {
                 }
                 instancias.add(new Instancia(caracteristicas, Classe.parseClasse(strCaracteristicas[strCaracteristicas.length - 1])));
             }
-            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]),100);
+            conjunto = new Conjunto(instancias.toArray(new Instancia[instancias.size()]));
         } catch (IOException ex) {
             ex.printStackTrace();
         }
