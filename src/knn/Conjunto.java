@@ -102,19 +102,19 @@ public final class Conjunto implements Iterable<Instancia> {
             for (int i = 0; i < novoNumeroInstacias; i++) {
                 numeroInstancia = gerador.nextInt(novoNumeroInstacias);
                 novoNumeroInstacias--;
-                excluirInstacia(numeroInstancia);
+                excluirInstancia(numeroInstancia);
             }
         } else if (porcentagem == 50) {
             novoNumeroInstacias = this.getQuantidadeInstancias() / 2;
             for (int i = 0; i < novoNumeroInstacias; i++) {
                 numeroInstancia = gerador.nextInt(novoNumeroInstacias);
                 novoNumeroInstacias--;
-                excluirInstacia(numeroInstancia);
+                excluirInstancia(numeroInstancia);
             }
         }
     }
 
-    public void excluirInstacia(int index) {
+    public void excluirInstancia(int index) {
         Instancia[] novaListaInstancias = new Instancia[this.getQuantidadeInstancias() - 1];
         instancias[index] = instancias[this.getQuantidadeInstancias()];
         int contador = 0;

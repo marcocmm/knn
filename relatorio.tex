@@ -43,20 +43,11 @@
 	\maketitle
 
 	\begin{resumo}
-		Relata o procedimento tomado para construir um algoritmo A* que soluciona o problema 8-Puzzle e os testes feitos sobre ele.
+		Relata o procedimento tomado para implementar o algoritmo k-NN e os testes feitos com ele sobre um conjunto de dados.
 	\end{resumo}
 
 	\section{O Problema}\label{sec:problema}
-
-		O jogo 8-\textit{Puzzle}, aos olhos humanos possui uma solução, que embora não seja trivial, bastante intuitiva, dado seu objetivo. Consiste em um tabuleiro 3x3 sobre o qual deslizam oito peças enumeradas, onde os únicos movimentos possíveis para se atingir o objetivo são aqueles permitidos pelo buraco deixado pela nona peça. O objetivo do jogo é ordenar o tabuleiro.
-
-		O problema ocorre quando não há um agente dotado de intelecto para resolver o problema, não pela complexidade das verificações feitas para atingir-se o objetivo, mas sobre quais decisões devem ser tomadas em cada estado do problema, para atingir-se a solução do problema.
-
-		O espaço dos estados do 8-\textit{Puzzle} é $9!$ e a solução ótima tem classe NP-Completo, portanto, sortear o próximo estado ou expandir todas as possíveis soluções jamais poderia obter a solução em tempo plausível, o primeiro porque a aleatoriedade possui a mesma probabilidade de caminhar rumo a solução quanto de caminhar no sentido oposto, o segundo porque demandaria processamento e memória difíceis de serem obtidos.
-
-		Enfim, problemas cujos espaço dos estados fogem da possibilidade viável de computação dado a complexidade do algoritmo, são resolvíveis por meio do uso de inteligência artificial, que, muito embora não forneça a melhor solução, fornece uma solução muito boa em tempo muito bom (é claro que alguns tipos de problemas são melhores resolvidos com determinados tipos de algoritmos observando-se os determinados parâmetros que o fazem comportar-se bem).
-
-		Para o 8-\textit{Puzzle} é possível lançar-se mão desta categoria de algoritmos, contudo neste trabalho, utilizou-se o algoritmo A* que não é capaz de aprender (uma vez que armazenar resultados anteriores e observar se já foram visitados não é aprendizagem de máquina), mas que retorna um resultado muito bom em tempo viável dado sua capacidade de ignorar estados que afastam-se do objetivo e caminhar sempre rumo a ele.
+		
 
 	\section{O algoritmo}\label{sec:algoritmo}
 
@@ -74,6 +65,16 @@
 		implementou-se em java.
 		Diagrama de classes.
 
+\newgeometry{left=0cm,bottom=0cm,right=0cm,top=0cm}
+\begin{landscape}
+\centering
+\begin{figure}[p]
+\includegraphics[width=1.4\textwidth]{classDiagram.png}
+\caption{Diagrama de Classes}
+\label{fig:classDiagram}
+\end{figure}
+\end{landscape}
+\restoregeometry
 
 		\begin{algorithm}[H]
 			\KwData{Instância de um Puzzle a ser resolvida.}
@@ -94,15 +95,20 @@
 	\section{Resultados}\label{sec:resultados}
 
 	
+Seu algoritmo deve avaliar o desempenho para diferentes valores de k ;
+Gerar a matriz de confusão ;
+Usar a distância Euclidiana, Manhattan ou outra;
+Normalizar os dados com Min-Max ou Z-score ;
+Separar o conjunto de treinamento (aleatoriamente) em 25\%, 50\% e 100\% dos dados de treinamento. Avaliar qual o impacto de usar mais e menos instâncias no conjunto de treinamento.
+
+
 
 	\section{Considerações Finais}\label{sec:consideracoesFinais}
 
-		Considera-se, deste modo, que embora 78 passos seja um número alto de movimentos para solucionar o puzzle, sabe-se que o espaço de soluções possíveis é $9!$, isto é, 362880, de modo que obter a melhor solução custam recursos indisponíveis. Assim sendo, considera-se como aceitável que um algoritmo (ainda que não inteligente) resolva um problema dessa magnitude nessa quantidade de passos e com a bela velocidade de execução observada.
-
-		Sobretudo, ressalta-se que para os mais variados casos, como revelou o teste adicional de instâncias aleatórias, as heurísticas combinadas não puderam cobrir mais de 15\% dos casos, número bastante ruim, mas que justificado devido ao fato de tratar-se de um algoritmo de busca, que, portanto, é incapaz de aprender.
+		
 
 	\section{Referências}\label{sec:referencias}
 
-		JÚNIOR, Nelson F., GUIMARÃES Frederico G. \textbf{Problema 8-Puzzle:} Análise da solução usando Backtracking e Algoritmos Genéticos.
+		
 
 \end{document}

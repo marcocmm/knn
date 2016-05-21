@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  19 MAY 2016 00:19
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  21 MAY 2016 03:15
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -532,7 +532,7 @@ Package: enumitem 2011/09/28 v3.5.2 Customized lists
 \enit@inbox=\box73
 \enitdp@description=\count134
 )
-No file relatorio.aux.
+(./relatorio.aux)
 \openout1 = `relatorio.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
@@ -548,7 +548,7 @@ LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
 LaTeX Font Info:    ... okay on input line 41.
 LaTeX Font Info:    Try loading font information for OT1+lmr on input line 41.
-(/usr/share/texmf/tex/latex/lm/ot1lmr.fd
+ (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
 File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
 *geometry* driver: auto-detecting
@@ -647,27 +647,51 @@ LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
 [1
 
 ]
-Overfull \hbox (19.64563pt too wide) in paragraph at lines 103--105
-\OT1/lmr/m/n/12 36[\OML/lmm/m/it/12 numeroPecasTrocadas\OT1/lmr/m/n/12 (\OML/lm
-m/m/it/12 initial; son\OT1/lmr/m/n/12 ) + \OML/lmm/m/it/12 numeroPecasTrocadas\
-OT1/lmr/m/n/12 (\OML/lmm/m/it/12 son; solution\OT1/lmr/m/n/12 )]$ 
- []
+*geometry* verbose mode - [ newgeometry ] result:
+* driver: xetex
+* paper: a4paper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(0.0pt, 597.50787pt, 0.0pt)
+* v-part:(T,H,B)=(0.0pt, 845.04684pt, 0.0pt)
+* \paperwidth=597.50787pt
+* \paperheight=845.04684pt
+* \textwidth=597.50787pt
+* \textheight=845.04684pt
+* \oddsidemargin=-72.26999pt
+* \evensidemargin=-72.26999pt
+* \topmargin=-109.26999pt
+* \headheight=12.0pt
+* \headsep=25.0pt
+* \topskip=12.0pt
+* \footskip=30.0pt
+* \marginparwidth=44.0pt
+* \marginparsep=10.0pt
+* \columnsep=10.0pt
+* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-[2]
-Overfull \hbox (1.29834pt too wide) in paragraph at lines 107--109
-\OML/lmm/m/it/12 numeroPecasTrocadas\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 initial; 
-son\OT1/lmr/m/n/12 ) + \OML/lmm/m/it/12 numeroPecasTrocadas\OT1/lmr/m/n/12 (\OM
-L/lmm/m/it/12 son; solution\OT1/lmr/m/n/12 )$ 
- []
+File: classDiagram.png Graphic file (type QTm)
+ <use  "classDiagram.png" >
+LaTeX Font Info:    Try loading font information for OT1+lmss on input line 73.
+
+ (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
+File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
+)
+[2] [3
 
 
-Overfull \hbox (1.29834pt too wide) in paragraph at lines 111--113
-\OML/lmm/m/it/12 numeroPecasTrocadas\OT1/lmr/m/n/12 (\OML/lmm/m/it/12 initial; 
-son\OT1/lmr/m/n/12 ) + \OML/lmm/m/it/12 numeroPecasTrocadas\OT1/lmr/m/n/12 (\OM
-L/lmm/m/it/12 son; solution\OT1/lmr/m/n/12 )$ 
- []
 
-[3] (./relatorio.aux)
+
+] (./relatorio.aux)
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
@@ -680,12 +704,12 @@ LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
 ### simple group (level 1) entered at line 1061 ({)
 ### bottom level 
 Here is how much of TeX's memory you used:
- 7487 strings out of 495638
- 103034 string characters out of 6187352
- 220350 words of memory out of 5000000
- 10519 multiletter control sequences out of 15000+600000
- 49132 words of font info for 56 fonts, out of 8000000 for 9000
+ 7520 strings out of 495638
+ 103676 string characters out of 6187352
+ 216382 words of memory out of 5000000
+ 10541 multiletter control sequences out of 15000+600000
+ 53073 words of font info for 58 fonts, out of 8000000 for 9000
  16 hyphenation exceptions out of 8191
- 43i,10n,43p,578b,3437s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 43i,10n,43p,310b,3487s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on relatorio.pdf (3 pages).

@@ -57,8 +57,8 @@ public class Distancia implements Comparable<Distancia> {
     }
 
     @Override
-    public int compareTo(Distancia o) {
-        return Double.compare(this.distance, o.distance);
+    public int compareTo(Distancia other) {
+        return Double.compare(this.distance, other.distance);
     }
 
 }

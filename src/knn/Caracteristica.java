@@ -21,13 +21,13 @@ public class Caracteristica {
         return valor;
     }
 
+    public void setValor(double valor) {
+        this.valor = valor;
+    }
+
     @Override
     public Object clone() {
         return new Caracteristica(this.valor);
-    }
-
-    public void setValor(double valor) {
-        this.valor = valor;
     }
 
 }
