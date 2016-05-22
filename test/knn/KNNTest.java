@@ -24,7 +24,7 @@ public class KNNTest {
         InputStream testeInputStream = getClass().getResourceAsStream("/conjuntos/teste.data");
         KNN knn;
         try {
-            knn = new KNN(1, treinoInputStream, 100);
+            knn = new KNN(1, treinoInputStream, 100, true);
             knn.setConjuntoTeste(testeInputStream);
             knn.classify();
             System.out.println(knn.getMatrizConfusao().getAccuracy());

@@ -24,32 +24,23 @@ public class KNN {
     private final Conjunto treino;
     private Conjunto teste;
     private Confusao confusao;
+    private final boolean normalizar;
 
-    public KNN(int k, Conjunto treino, int porcentagem) {
-        this.k = k;
-        this.treino = (Conjunto) treino.clone();
-        this.treino.separarInstancias(porcentagem);
-        this.treino.normalizarMinMax();
-    }
-
-    public KNN(int k, InputStream treinoInputStream) throws Exception {
-        this.k = k;
-        this.treino = parseInputStream(treinoInputStream);
-    }
-
-    public KNN(int k, InputStream treinoInputStream, int porcentagem) throws Exception {
+    public KNN(int k, InputStream treinoInputStream, int porcentagem, boolean normalizar) throws Exception {
         this.k = k;
         this.treino = parseInputStream(treinoInputStream);
         this.treino.separarInstancias(porcentagem);
-//        this.treino.normalizarMinMax();
-    }
-
-    public void setConjuntoTeste(Conjunto teste) {
-        this.teste = (Conjunto) teste.clone();
+        this.normalizar = normalizar;
+        if (this.normalizar) {
+            this.treino.normalizarMinMax();
+        }
     }
 
     public void setConjuntoTeste(InputStream testeInputStream) throws Exception {
         this.teste = parseInputStream(testeInputStream);
+        if (this.normalizar) {
+            this.teste.normalizarMinMax();
+        }
     }
 
     private Conjunto parseInputStream(InputStream inputStream) throws Exception {

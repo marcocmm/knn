@@ -64,7 +64,7 @@ public final class Conjunto implements Iterable<Instancia> {
         for (Instancia instancia : this) {
             index = 0;
             for (Caracteristica caracteristica : instancia) {
-                if (((caracteristica.getValor() < listMinMax[0][index].getValor()) && (caracteristica.getValor() != 0)) ||(listMinMax[0][index].getValor() == 0)) {
+                if (caracteristica.getValor() < listMinMax[0][index].getValor()) {
                     listMinMax[0][index] = caracteristica;
                 } else if (caracteristica.getValor() > listMinMax[1][index].getValor()) {
                     listMinMax[1][index] = caracteristica;
@@ -72,12 +72,13 @@ public final class Conjunto implements Iterable<Instancia> {
                 index++;
             }
         }
-        double novoValor;
+        double novoValor, minino, maximo;
         for (Instancia instancia : this) {
             index = 0;
             for (Caracteristica caracteristica : instancia) {
-                novoValor = ((caracteristica.getValor() - listMinMax[0][index].getValor())
-                        / (listMinMax[1][index].getValor() - listMinMax[0][index].getValor()));
+                minino = listMinMax[0][index].getValor();
+                maximo = listMinMax[1][index].getValor();
+                novoValor = ((caracteristica.getValor() - minino) / (maximo - minino));
                 caracteristica.setValor(novoValor);
                 index++;
             }
