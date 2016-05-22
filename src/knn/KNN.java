@@ -11,7 +11,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 
 /**
@@ -24,34 +23,23 @@ public class KNN {
     private final Conjunto treino;
     private Conjunto teste;
     private Confusao confusao;
+    private final boolean normalizar;
 
-    public KNN(int k, Conjunto treino, int porcentagem) {
-        this.k = k;
-        this.treino = (Conjunto) treino.clone();
-        this.treino.separarInstancias(porcentagem);
-        this.treino.normalizarMinMax();
-    }
-
-    public KNN(int k, InputStream treinoInputStream) throws Exception {
-        this.k = k;
-        this.treino = parseInputStream(treinoInputStream);
-    }
-
-    public KNN(int k, InputStream treinoInputStream, int porcentagem) throws Exception {
+    public KNN(int k, InputStream treinoInputStream, int porcentagem, boolean normalizar) throws Exception {
         this.k = k;
         this.treino = parseInputStream(treinoInputStream);
         this.treino.separarInstancias(porcentagem);
-        this.treino.normalizarMinMax();
-    }
-
-    public void setConjuntoTeste(Conjunto teste) {
-        this.teste = (Conjunto) teste.clone();
-        this.teste.normalizarMinMax();
+        this.normalizar = normalizar;
+        if (this.normalizar) {
+            this.treino.normalizarMinMax();
+        }
     }
 
     public void setConjuntoTeste(InputStream testeInputStream) throws Exception {
         this.teste = parseInputStream(testeInputStream);
-        this.teste.normalizarMinMax();
+        if (this.normalizar) {
+            this.teste.normalizarMinMax();
+        }
     }
 
     private Conjunto parseInputStream(InputStream inputStream) throws Exception {
@@ -90,44 +78,43 @@ public class KNN {
     }
 
     public void classify() {
-        Iterator<Instancia> instanciasTreino;
-        Iterator<Instancia> instanciasTeste;
-        Instancia instanciaTeste;
-        Instancia instanciaTreino;
-        List<Distancia> distancias;
-        Distancia distancia;
-        int[] votos;
         Classe classifiedAs;
 
         this.confusao = new Confusao(this.treino.getQuantidadeClasses(), this.teste.getQuantidadeInstancias());
-        instanciasTeste = this.teste.iterator();
+
+        for (Instancia instanciaTeste : this.teste) {
+            classifiedAs = classify(instanciaTeste);
+            this.confusao.registrarConfusao(instanciaTeste.getClasse(), classifiedAs);
+            instanciaTeste.setClasse(classifiedAs);
+        }
+    }
+
+    public Classe classify(Instancia instancia) {
+        List<Distancia> distancias;
+        Distancia distancia;
+        int[] votos;
 
         try {
-            while (instanciasTeste.hasNext()) {
-                instanciaTeste = instanciasTeste.next();
-                instanciasTreino = this.treino.iterator();
-                distancias = new ArrayList();
-                while (instanciasTreino.hasNext()) {
-                    instanciaTreino = instanciasTreino.next();
-                    distancia = new Distancia(instanciaTeste, instanciaTreino);
-                    distancia.calculateEuclidienDistance();
-                    distancias.add(distancia);
-                }
-                Collections.sort(distancias);
-                votos = new int[this.treino.getQuantidadeClasses()];
-                if (distancias.size() <= k) {
-                    throw new Exception("Vetor de distâncias não preenchido");
-                }
-                for (int i = 0; i < k; i++) {
-                    votos[Classe.toInt(distancias.get(0).getTo().getClasse()) - 1]++;
-                    distancias.remove(0);
-                }
-                classifiedAs = Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
-                this.confusao.registrarConfusao(instanciaTeste.getClasse(), classifiedAs);
-                instanciaTeste.setClasse(classifiedAs);
+            distancias = new ArrayList();
+            for (Instancia instanciaTreino : this.treino) {
+                distancia = new Distancia(instancia, instanciaTreino);
+                distancia.calculateEuclidienDistance();
+                distancias.add(distancia);
+
             }
+            Collections.sort(distancias);
+            votos = new int[this.treino.getQuantidadeClasses()];
+            if (distancias.size() <= k) {
+                throw new Exception("Vetor de distâncias não preenchido");
+            }
+            for (int i = 0; i < k; i++) {
+                votos[Classe.toInt(distancias.get(0).getTo().getClasse()) - 1]++;
+                distancias.remove(0);
+            }
+            return Classe.parseInt(getIndexDoMaiorValor(votos) + 1);
         } catch (Exception ex) {
             ex.printStackTrace();
+            return null;
         }
     }
 
