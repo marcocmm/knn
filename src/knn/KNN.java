@@ -41,15 +41,17 @@ public class KNN {
         this.k = k;
         this.treino = parseInputStream(treinoInputStream);
         this.treino.separarInstancias(porcentagem);
-//        this.treino.normalizarMinMax();
+        this.treino.normalizarMinMax();
     }
 
     public void setConjuntoTeste(Conjunto teste) {
         this.teste = (Conjunto) teste.clone();
+        this.teste.normalizarMinMax();
     }
 
     public void setConjuntoTeste(InputStream testeInputStream) throws Exception {
         this.teste = parseInputStream(testeInputStream);
+        this.teste.normalizarMinMax();
     }
 
     private Conjunto parseInputStream(InputStream inputStream) throws Exception {
