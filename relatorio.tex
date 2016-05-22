@@ -46,10 +46,29 @@
 		Relata o procedimento tomado para implementar o algoritmo k-NN e os testes feitos com ele sobre um conjunto de dados.
 	\end{resumo}
 
-	\section{O Problema}\label{sec:problema}
-		
-
 	\section{O algoritmo}\label{sec:algoritmo}
+		
+		O K-nearest neighbors (k-NN) é um algoritmo de classificação inteligente que avalia os k elementos mais similares ao elemento a que se deseja classificar e então rotula-o por meio de voto majoritário. É classificado como um algoritmo de aprendizagem supervisionada, de modo que exige um conjunto de treinamento já com as respostas de cada instância de treino.
+
+		O k-NN pode calcular a proximidade de instâncias 
+
+		\begin{algorithm}[H]
+			\KwData{Conjunto de testes}
+			\KwResult{Matriz de confusão}
+			Insere a primeira instância na lista do caminho percorrido\;
+			\While{Puzzle não está resolvido}{
+				Obtém o última instância do caminho\;
+				Obtém os possíveis movimentos da instância\;
+				Calcula a heurística para cada possível movimento\;
+				Escolhe a instância que possui melhor heurística\;
+				Adiciona a instância ao caminho percorrido\;
+			}
+			\caption{Pseudo-código k-NN}
+		\end{algorithm}
+
+		Obviamente em um cenário real, ao ser empregado o algoritmo k-NN, 
+
+	\section{Implementação}\label{sec:implementacao}
 
 
 		meses do ano
@@ -75,22 +94,6 @@
 		\end{figure}
 		\end{landscape}
 		\restoregeometry
-
-		\begin{algorithm}[H]
-			\KwData{Instância de um Puzzle a ser resolvida.}
-			\KwResult{Lista do caminho percorrido para solucionar o puzzle.}
-			Insere a primeira instância na lista do caminho percorrido\;
-			\While{Puzzle não está resolvido}{
-				Obtém o última instância do caminho\;
-				Obtém os possíveis movimentos da instância\;
-				Calcula a heurística para cada possível movimento\;
-				Escolhe a instância que possui melhor heurística\;
-				Adiciona a instância ao caminho percorrido\;
-			}
-			\caption{Busca A* para resolver 8-Puzzle}
-		\end{algorithm}
-
-
 
 	\section{Resultados}\label{sec:resultados}
 
