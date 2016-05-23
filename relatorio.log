@@ -1,722 +1,186 @@
-This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xelatex 2016.4.28)  21 MAY 2016 15:40
+This is XeTeX, Version 3.1415926-2.5-0.9999.3 (TeX Live 2013/Debian) (format=xetex 2016.5.2)  22 MAY 2016 21:24
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **relatorio.tex
 (./relatorio.tex
-LaTeX2e <2011/06/27>
-Babel <3.9h> and hyphenation patterns for 3 languages loaded.
-(/usr/share/texlive/texmf-dist/tex/latex/base/article.cls
-Document Class: article 2007/10/19 v1.4h Standard LaTeX document class
-(/usr/share/texlive/texmf-dist/tex/latex/base/size12.clo
-File: size12.clo 2007/10/19 v1.4h Standard LaTeX file (size option)
-)
-\c@part=\count80
-\c@section=\count81
-\c@subsection=\count82
-\c@subsubsection=\count83
-\c@paragraph=\count84
-\c@subparagraph=\count85
-\c@figure=\count86
-\c@table=\count87
-\abovecaptionskip=\skip41
-\belowcaptionskip=\skip42
-\bibindent=\dimen102
-) (./sbc-template.sty
-Package: sbc-template 2001/06/09
-Invalid UTF-8 byte or sequence at line 9 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 10 replaced by U+FFFD.
+! Undefined control sequence.
+l.1 \documentclass
+                  [12pt]{article}
+? 
+! Undefined control sequence.
+l.3 \usepackage
+               {sbc-template}
+? 
+! Undefined control sequence.
+l.4 \usepackage
+               {graphicx,url}
+? 
+! Undefined control sequence.
+l.5 \usepackage
+               [brazil]{babel}
+? 
+! Undefined control sequence.
+l.6 \usepackage
+               [latin1]{inputenc}
+? 
+! Undefined control sequence.
+l.7 \usepackage
+               {lscape}
+? 
+! Undefined control sequence.
+l.8 \usepackage
+               {geometry}
+? 
+! Undefined control sequence.
+l.9 \usepackage
+               {float}
+? 
+! Undefined control sequence.
+l.10 \usepackage
+                {algorithm2e}
+? 
+! Undefined control sequence.
+l.11 \usepackage
+                {multicol}
+? 
+! Undefined control sequence.
+l.12 \usepackage
+                {amsmath}
+? 
+! Undefined control sequence.
+l.13 \usepackage
+                {amsfonts}
+? 
+! Undefined control sequence.
+l.14 \usepackage
+                {amssymb}
+? 
+! Undefined control sequence.
+l.15 \usepackage
+                {makeidx}
+? 
+! Undefined control sequence.
+l.16 \usepackage
+                {graphicx}
+? 
+! Undefined control sequence.
+l.17 \usepackage
+                {lmodern}
+? 
+! Undefined control sequence.
+l.18 \usepackage
+                {enumerate}
+? 
+! Undefined control sequence.
+l.19 \usepackage
+                {latexsym}
+? 
+! Undefined control sequence.
+l.20 \usepackage
+                {longtable}
+? 
+! Undefined control sequence.
+l.21 \usepackage
+                [all]{xy}
+? 
+! Undefined control sequence.
+l.22 \usepackage
+                {float}
+? 
+! Undefined control sequence.
+l.23 \usepackage
+                {lscape}
+? 
+! Undefined control sequence.
+l.24 \usepackage
+                {mathrsfs}
+? 
+! Undefined control sequence.
+l.25 \usepackage
+                {fancyhdr}
+? 
+! Undefined control sequence.
+l.26 \usepackage
+                {boxedminipage}
+? 
+! Undefined control sequence.
+l.27 \usepackage
+                {enumitem}
+? 
 
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
-Package: geometry 2010/09/12 v5.6 Page Geometry
+Overfull \hbox (2.46826pt too wide) in paragraph at lines 3--28
+\tenrm math ams-fonts amssymb makeidx graph-icx lmod-ern enu-mer-ate la-texsym 
+longtable [all]xy float lscape mathrsfs|
 
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
-Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
-\KV@toks@=\toks14
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifpdf.sty
-Package: ifpdf 2011/01/30 v2.3 Provides the ifpdf switch (HO)
-Package ifpdf Info: pdfTeX in PDF mode is not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/oberdiek/ifvtex.sty
-Package: ifvtex 2010/03/01 v1.5 Detect VTeX and its facilities (HO)
-Package ifvtex Info: VTeX not detected.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/ifxetex/ifxetex.sty
-Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
-)
-\Gm@cnth=\count88
-\Gm@cntv=\count89
-\c@Gm@tempcnt=\count90
-\Gm@bindingoffset=\dimen103
-\Gm@wd@mp=\dimen104
-\Gm@odd@mp=\dimen105
-\Gm@even@mp=\dimen106
-\Gm@layoutwidth=\dimen107
-\Gm@layoutheight=\dimen108
-\Gm@layouthoffset=\dimen109
-\Gm@layoutvoffset=\dimen110
-\Gm@dimlist=\toks15
-)
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption2.sty
-Package: caption2 2013/02/03 v2.2-62 Customising captions (AR)
+\hbox(7.5+2.5)x469.75499, glue set - 1.0
+.\tenrm m
+.\tenrm a
+.\tenrm t
+.\tenrm h
+.\glue 3.33333 plus 1.66666 minus 1.11111
+.etc.
 
+! Undefined control sequence.
+l.30 \sloppy
+            
+? 
+! Undefined control sequence.
+l.32 \title
+           {Implementação do algoritmo k-NN}
+? 
+Missing character: There is no ç in font cmr10!
+Missing character: There is no ã in font cmr10!
+! Undefined control sequence.
+l.34 \author
+            {Marco Cezar Moreira de Mattos\inst{1}, Rômulo Manciola Meloca\...
 
-Package caption2 Warning: ****************************************************
-(caption2)                THIS PACKAGE IS OBSOLETE:
-(caption2)                This package attempts to provide an `caption2'
-(caption2)                package v2.0/2.1 author environment so that OLD
-(caption2)                documents can be successfully processed. It should
-(caption2)                NOT be used for NEW documents! New documents should
-(caption2)                use the regular `caption' package v3.x instead.
-(caption2)                ****************************************************
+? 
+! Undefined control sequence.
+l.34 \author{Marco Cezar Moreira de Mattos\inst
+                                               {1}, Rômulo Manciola Meloca\...
 
-(/usr/share/texlive/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2013/05/02 v1.6-88 caption3 kernel (AR)
-Package caption3 Info: TeX engine: e-TeX on input line 57.
-\captionmargin=\dimen111
-\captionmargin@=\dimen112
-\captionwidth=\dimen113
-\caption@tempdima=\dimen114
-\caption@indent=\dimen115
-\caption@parindent=\dimen116
-\caption@hangindent=\dimen117
-)
-Package caption2 Info: Running in caption2 v2.0 compatibility mode on input lin
-e 215.
-\captionlinewidth=\dimen118
-\realcaptionwidth=\dimen119
-)
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/times.sty
-Package: times 2005/04/12 PSNFSS-v9.2a (SPQR) 
-)
-\c@instn=\count91
-
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
-\ttl@box=\box26
-\beforetitleunit=\skip43
-\aftertitleunit=\skip44
-\ttl@plus=\dimen120
-\ttl@minus=\dimen121
-\ttl@toksa=\toks16
-\titlewidth=\dimen122
-\titlewidthlast=\dimen123
-\titlewidthfirst=\dimen124
-))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
-Package: graphicx 1999/02/16 v1.0f Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
-Package: graphics 2009/02/05 v1.0o Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 1999/03/16 v1.09 sin cos tan (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/graphics.cfg
-File: graphics.cfg 2010/04/23 v1.9 graphics configuration of TeX Live
-)
-Package graphics Info: Driver file: xetex.def on input line 91.
-
-(/usr/share/texlive/texmf-dist/tex/xelatex/xetex-def/xetex.def
-File: xetex.def 2013/04/29 v0.96 LaTeX color/graphics driver for XeTeX (RRM/JK)
-
-))
-\Gin@req@height=\dimen125
-\Gin@req@width=\dimen126
-)
-(/usr/share/texlive/texmf-dist/tex/latex/url/url.sty
-\Urlmuskip=\muskip10
-Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
-)
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.sty
-Package: babel 2013/12/03 3.9h The Babel package
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel-portuges/portuges.ldf
-Language: portuges 2008/03/18 v1.2q Portuguese support from the babel system
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/babel.def
-File: babel.def 2013/12/03 3.9h Babel common definitions
-\babel@savecnt=\count92
-\U@D=\dimen127
-
-(/usr/share/texlive/texmf-dist/tex/generic/babel/xebabel.def))
-\l@brazil = a dialect from \language\l@portuges 
-Package babel Info: Making " an active character on input line 145.
-))
-(/usr/share/texlive/texmf-dist/tex/latex/base/inputenc.sty
-Package: inputenc 2008/03/30 v1.1d Input encoding file
-\inpenc@prehook=\toks17
-\inpenc@posthook=\toks18
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/latin1.def
-File: latin1.def 2008/03/30 v1.1d Input encoding file
-))
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/lscape.sty
-Package: lscape 2000/10/22 v3.01 Landscape Pages (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count93
-\float@exts=\toks19
-\float@box=\box27
-\@float@everytoks=\toks20
-\@floatcapt=\box28
-) (./algorithm2e.sty
-Invalid UTF-8 byte or sequence at line 275 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 290 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 540 replaced by U+FFFD.
-Package: algorithm2e 2013/01/06 v5.00 algorithms environments
-\c@AlgoLine=\count94
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-Invalid UTF-8 byte or sequence at line 1311 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1313 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 1315 replaced by U+FFFD.
-\algocf@hangindent=\skip45
-
-(/usr/share/texlive/texmf-dist/tex/latex/tools/xspace.sty
-Package: xspace 2009/10/20 v1.13 Space after command names (DPC,MH)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/relsize/relsize.sty
-Package: relsize 2013/03/29 ver 4.1
-)
-********************************************************
-Package `algorithm2e' Release 5.1 -- october 19 2015 --
-- algorithm2e-announce@lirmm.fr mailing list for announcement about releases
-- algorithm2e-discussion@lirmm.fr mailing list for discussion about package
-subscribe by emailing sympa@lirmm.fr with 'subscribe <list> <firstname name>'
-- Author: Christophe Fiorio (christophe.fiorio@umontpellier.fr)
-********************************************************
-\skiptotal=\skip46
-\skiplinenumber=\skip47
-\skiprule=\skip48
-\skiphlne=\skip49
-\skiptext=\skip50
-\skiplength=\skip51
-\algomargin=\skip52
-\skipalgocfslide=\skip53
-\algowidth=\dimen128
-\inoutsize=\dimen129
-\inoutindent=\dimen130
-\interspacetitleruled=\dimen131
-\interspacealgoruled=\dimen132
-\interspacetitleboxruled=\dimen133
-\algocf@ruledwidth=\skip54
-\algocf@inoutbox=\box29
-\algocf@inputbox=\box30
-\AlCapSkip=\skip55
-\AlCapHSkip=\skip56
-\algoskipindent=\skip57
-\algocf@nlbox=\box31
-\algocf@hangingbox=\box32
-\algocf@untilbox=\box33
-\algocf@skipuntil=\skip58
-\algocf@capbox=\box34
-\algoheightruledefault=\skip59
-\algoheightrule=\skip60
-\algotitleheightruledefault=\skip61
-\algotitleheightrule=\skip62
-\c@algocfline=\count95
-\c@algocfproc=\count96
-\c@algocf=\count97
-\algocf@algoframe=\box35
-\algocf@algobox=\box36
-) (/usr/share/texlive/texmf-dist/tex/latex/tools/multicol.sty
-Package: multicol 2011/06/27 v1.7a multicolumn formatting (FMi)
-\c@tracingmulticols=\count98
-\mult@box=\box37
-\multicol@leftmargin=\dimen134
-\c@unbalance=\count99
-\c@collectmore=\count100
-\doublecol@number=\count101
-\multicoltolerance=\count102
-\multicolpretolerance=\count103
-\full@width=\dimen135
-\page@free=\dimen136
-\premulticols=\dimen137
-\postmulticols=\dimen138
-\multicolsep=\skip63
-\multicolbaselineskip=\skip64
-\partial@page=\box38
-\last@line=\box39
-\mult@rightbox=\box40
-\mult@grightbox=\box41
-\mult@gfirstbox=\box42
-\mult@firstbox=\box43
-\@tempa=\box44
-\@tempa=\box45
-\@tempa=\box46
-\@tempa=\box47
-\@tempa=\box48
-\@tempa=\box49
-\@tempa=\box50
-\@tempa=\box51
-\@tempa=\box52
-\@tempa=\box53
-\@tempa=\box54
-\@tempa=\box55
-\@tempa=\box56
-\@tempa=\box57
-\@tempa=\box58
-\@tempa=\box59
-\@tempa=\box60
-\c@columnbadness=\count104
-\c@finalcolumnbadness=\count105
-\last@try=\dimen139
-\multicolovershoot=\dimen140
-\multicolundershoot=\dimen141
-\mult@nat@firstbox=\box61
-\colbreak@box=\box62
-\multicol@sort@counter=\count106
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsmath.sty
-Package: amsmath 2013/01/14 v2.14 AMS math features
-\@mathmargin=\skip65
-
-For additional information on amsmath, use the `?' option.
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amstext.sty
-Package: amstext 2000/06/29 v2.01
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsgen.sty
-File: amsgen.sty 1999/11/30 v2.0
-\@emptytoks=\toks21
-\ex@=\dimen142
-))
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsbsy.sty
-Package: amsbsy 1999/11/29 v1.2d
-\pmbraise@=\dimen143
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 1999/12/14 v2.01 operator names
-)
-\inf@bad=\count107
-LaTeX Info: Redefining \frac on input line 210.
-\uproot@=\count108
-\leftroot@=\count109
-LaTeX Info: Redefining \overline on input line 306.
-\classnum@=\count110
-\DOTSCASE@=\count111
-LaTeX Info: Redefining \ldots on input line 378.
-LaTeX Info: Redefining \dots on input line 381.
-LaTeX Info: Redefining \cdots on input line 466.
-\Mathstrutbox@=\box63
-\strutbox@=\box64
-\big@size=\dimen144
-LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
-LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
-\macc@depth=\count112
-\c@MaxMatrixCols=\count113
-\dotsspace@=\muskip11
-\c@parentequation=\count114
-\dspbrk@lvl=\count115
-\tag@help=\toks22
-\row@=\count116
-\column@=\count117
-\maxfields@=\count118
-\andhelp@=\toks23
-\eqnshift@=\dimen145
-\alignsep@=\dimen146
-\tagshift@=\dimen147
-\tagwidth@=\dimen148
-\totwidth@=\dimen149
-\lineht@=\dimen150
-\@envbody=\toks24
-\multlinegap=\skip66
-\multlinetaggap=\skip67
-\mathdisplay@stack=\toks25
-LaTeX Info: Redefining \[ on input line 2665.
-LaTeX Info: Redefining \] on input line 2666.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amsfonts.sty
-Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
-\symAMSa=\mathgroup4
-\symAMSb=\mathgroup5
-LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
-(Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/amssymb.sty
-Package: amssymb 2013/01/14 v3.01 AMS font symbols
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/makeidx.sty
-Package: makeidx 2000/03/29 v1.0m Standard LaTeX package
-)
-(/usr/share/texmf/tex/latex/lm/lmodern.sty
-Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
-LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
-(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
-(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
-(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
-(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
-LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
-LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
-(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
-LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
-(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
-LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
-(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
-(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
-(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
-LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
-(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
-LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
-(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
-LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
-(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
-LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
-(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/enumerate.sty
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks26
-)
-(/usr/share/texlive/texmf-dist/tex/latex/base/latexsym.sty
-Package: latexsym 1998/08/17 v2.2e Standard LaTeX package (lasy symbols)
-\symlasy=\mathgroup6
-LaTeX Font Info:    Overwriting symbol font `lasy' in version `bold'
-(Font)                  U/lasy/m/n --> U/lasy/b/n on input line 47.
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tools/longtable.sty
-Package: longtable 2004/02/01 v4.11 Multi-page Table package (DPC)
-\LTleft=\skip68
-\LTright=\skip69
-\LTpre=\skip70
-\LTpost=\skip71
-\LTchunksize=\count119
-\LTcapwidth=\dimen151
-\LT@head=\box65
-\LT@firsthead=\box66
-\LT@foot=\box67
-\LT@lastfoot=\box68
-\LT@cols=\count120
-\LT@rows=\count121
-\c@LT@tables=\count122
-\c@LT@chunks=\count123
-\LT@p@ftn=\toks27
-)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xy.sty
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xy.tex Bootstrap'ing:
-catcodes, docmode, (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrecat.tex
-) (/usr/share/texlive/texmf-dist/tex/generic/xypic/xyidioms.tex)
-
- Xy-pic version 3.8.9 <2013/10/06>
- Copyright (c) 1991-2013 by Kristoffer H. Rose <krisrose@tug.org> and others
- Xy-pic is free software: see the User's Guide for details.
-
-Loading kernel: messages; fonts; allocations: state,
-\X@c=\dimen152
-\Y@c=\dimen153
-\U@c=\dimen154
-\D@c=\dimen155
-\L@c=\dimen156
-\R@c=\dimen157
-\Edge@c=\toks28
-\X@p=\dimen158
-\Y@p=\dimen159
-\U@p=\dimen160
-\D@p=\dimen161
-\L@p=\dimen162
-\R@p=\dimen163
-\Edge@p=\toks29
-\X@origin=\dimen164
-\Y@origin=\dimen165
-\X@xbase=\dimen166
-\Y@xbase=\dimen167
-\X@ybase=\dimen168
-\Y@ybase=\dimen169
-\X@min=\dimen170
-\Y@min=\dimen171
-\X@max=\dimen172
-\Y@max=\dimen173
-\lastobjectbox@=\box69
-\zerodotbox@=\box70
-\almostz@=\dimen174
- direction,
-\d@X=\dimen175
-\d@Y=\dimen176
-\K@=\count124
-\KK@=\count125
-\Direction=\count126
-\K@dXdY=\dimen177
-\K@dYdX=\dimen178
-\xyread@=\read1
-\xywrite@=\write3
-\csp@=\count127
-\quotPTK@=\dimen179
-
-utility macros; pictures: \xy, positions,
-\swaptoks@@=\toks30
-\connectobjectbox@@=\box71
- objects,
-\styletoks@=\toks31
- decorations;
-kernel objects: directionals, circles, text; options; algorithms: directions,
-edges, connections;  Xy-pic loaded)
-Package: xy 2013/10/06 Xy-pic version 3.8.9
-
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xyall.tex
- Xy-pic option: All features v.3.8
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xycurve.tex
- Xy-pic option: Curve and Spline extension v.3.12 curve,
-\crv@cnt@=\count128
-\crvpts@=\toks32
-\splinebox@=\box72
-\splineval@=\dimen180
-\splinedepth@=\dimen181
-\splinetol@=\dimen182
-\splinelength@=\dimen183
- circles,
-\L@=\dimen184
- loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xyframe.tex
- Xy-pic option: Frame and Bracket extension v.3.14 loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xycmtip.tex
- Xy-pic option: Computer Modern tip extension v.3.7
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xytips.tex
- Xy-pic option: More Tips extension v.3.11 loaded) loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xyline.tex
- Xy-pic option: Line styles extension v.3.10
-\xylinethick@=\dimen185
- loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xyrotate.tex
- Xy-pic option: Rotate and Scale extension v.3.8 loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xycolor.tex
- Xy-pic option: Colour extension v.3.11 loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xymatrix.tex
- Xy-pic option: Matrix feature v.3.14
-\Row=\count129
-\Col=\count130
-\queue@=\toks33
-\queue@@=\toks34
-\qcount@=\count131
-\qcount@@=\count132
-\matrixsize@=\count133
- loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xyarrow.tex
- Xy-pic option: Arrow and Path feature v.3.9 path, \ar, loaded)
-(/usr/share/texlive/texmf-dist/tex/generic/xypic/xygraph.tex
- Xy-pic option: Graph feature v.3.11 loaded) loaded))
-(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/mathrsfs.sty
-Package: mathrsfs 1996/01/01 Math RSFS package v1.0 (jk)
-\symrsfs=\mathgroup7
-)
-(/usr/share/texlive/texmf-dist/tex/latex/fancyhdr/fancyhdr.sty
-\fancy@headwidth=\skip72
-\f@ncyO@elh=\skip73
-\f@ncyO@erh=\skip74
-\f@ncyO@olh=\skip75
-\f@ncyO@orh=\skip76
-\f@ncyO@elf=\skip77
-\f@ncyO@erf=\skip78
-\f@ncyO@olf=\skip79
-\f@ncyO@orf=\skip80
-)
-(/usr/share/texlive/texmf-dist/tex/latex/boxedminipage/boxedminipage.sty)
-(/usr/share/texlive/texmf-dist/tex/latex/enumitem/enumitem.sty
-Package: enumitem 2011/09/28 v3.5.2 Customized lists
-\labelindent=\skip81
-\enit@outerparindent=\dimen186
-\enit@toks=\toks35
-\enit@inbox=\box73
-\enitdp@description=\count134
-)
-(./relatorio.aux)
-\openout1 = `relatorio.aux'.
-
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 41.
-LaTeX Font Info:    ... okay on input line 41.
-LaTeX Font Info:    Try loading font information for OT1+lmr on input line 41.
- (/usr/share/texmf/tex/latex/lm/ot1lmr.fd
-File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-*geometry* driver: auto-detecting
-*geometry* detected driver: xetex
-*geometry* verbose mode - [ preamble ] result:
-* driver: xetex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(85.35826pt, 426.79135pt, 85.35826pt)
-* v-part:(T,H,B)=(99.58464pt, 674.33032pt, 71.13188pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=426.79135pt
-* \textheight=674.33032pt
-* \oddsidemargin=13.08827pt
-* \evensidemargin=13.08827pt
-* \topmargin=-9.68535pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: End \AtBeginDocument code.
-LaTeX Font Info:    Try loading font information for OML+lmm on input line 43.
-(/usr/share/texmf/tex/latex/lm/omllmm.fd
-File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 43.
-
-
-(/usr/share/texmf/tex/latex/lm/omslmsy.fd
-File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMX+lmex on input line 43.
-
-
-(/usr/share/texmf/tex/latex/lm/omxlmex.fd
-File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <12> on input line 43.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <8> on input line 43.
-LaTeX Font Info:    External font `lmex10' loaded for size
-(Font)              <6> on input line 43.
-LaTeX Font Info:    Try loading font information for U+msa on input line 43.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
-File: umsa.fd 2013/01/14 v3.01 AMS symbols A
-)
-LaTeX Font Info:    Try loading font information for U+msb on input line 43.
-
-(/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
-File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-)
-LaTeX Font Info:    Try loading font information for U+lasy on input line 43.
-
-(/usr/share/texlive/texmf-dist/tex/latex/base/ulasy.fd
-File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
-)
-LaTeX Font Info:    Try loading font information for U+rsfs on input line 43.
-
-(/usr/share/texlive/texmf-dist/tex/latex/jknapltx/ursfs.fd
-File: ursfs.fd 1998/03/24 rsfs font definition file (jk)
-)
-LaTeX Font Info:    Try loading font information for OT1+lmtt on input line 43.
-
-
-(/usr/share/texmf/tex/latex/lm/ot1lmtt.fd
-File: ot1lmtt.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Try loading font information for OMS+lmtt on input line 43.
-
-LaTeX Font Info:    No file OMSlmtt.fd. on input line 43.
-
-
-LaTeX Font Warning: Font shape `OMS/lmtt/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 43.
-
-[1
-
-]
-*geometry* verbose mode - [ newgeometry ] result:
-* driver: xetex
-* paper: a4paper
-* layout: <same size as paper>
-* layoutoffset:(h,v)=(0.0pt,0.0pt)
-* modes: 
-* h-part:(L,W,R)=(0.0pt, 597.50787pt, 0.0pt)
-* v-part:(T,H,B)=(0.0pt, 845.04684pt, 0.0pt)
-* \paperwidth=597.50787pt
-* \paperheight=845.04684pt
-* \textwidth=597.50787pt
-* \textheight=845.04684pt
-* \oddsidemargin=-72.26999pt
-* \evensidemargin=-72.26999pt
-* \topmargin=-109.26999pt
-* \headheight=12.0pt
-* \headsep=25.0pt
-* \topskip=12.0pt
-* \footskip=30.0pt
-* \marginparwidth=44.0pt
-* \marginparsep=10.0pt
-* \columnsep=10.0pt
-* \skip\footins=10.8pt plus 4.0pt minus 2.0pt
-* \hoffset=0.0pt
-* \voffset=0.0pt
-* \mag=1000
-* \@twocolumnfalse
-* \@twosidefalse
-* \@mparswitchfalse
-* \@reversemarginfalse
-* (1in=72.27pt=25.4mm, 1cm=28.453pt)
-
-File: classDiagram.png Graphic file (type QTm)
- <use  "classDiagram.png" >
-LaTeX Font Info:    Try loading font information for OT1+lmss on input line 73.
-
- (/usr/share/texmf/tex/latex/lm/ot1lmss.fd
-File: ot1lmss.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-[2]
-LaTeX Font Info:    Try loading font information for OMS+lmr on input line 98.
- (/usr/share/texmf/tex/latex/lm/omslmr.fd
-File: omslmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
-)
-LaTeX Font Info:    Font shape `OMS/lmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/lmsy/m/n' tried instead on input line 98.
- [3
-
-
-
-
-] (./relatorio.aux)
-
-LaTeX Font Warning: Some font shapes were not available, defaults substituted.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- )
-(\end occurred inside a group at level 1)
-
-### simple group (level 1) entered at line 1061 ({)
-### bottom level 
-Here is how much of TeX's memory you used:
- 7542 strings out of 495638
- 104003 string characters out of 6187352
- 217358 words of memory out of 5000000
- 10560 multiletter control sequences out of 15000+600000
- 53073 words of font info for 58 fonts, out of 8000000 for 9000
- 16 hyphenation exceptions out of 8191
- 43i,10n,43p,310b,3487s stack positions out of 5000i,500n,10000p,200000b,80000s
-
-Output written on relatorio.pdf (3 pages).
+? 
+Missing character: There is no ô in font cmr10!
+! Undefined control sequence.
+l.34 ...ttos\inst{1}, Rômulo Manciola Meloca\inst
+                                                  {1}}
+? 
+! Undefined control sequence.
+l.36 \address
+             {DACOM -- Universidade Tecnológica Federal do Paraná (UTFPR)\\
+? 
+Missing character: There is no ó in font cmr10!
+Missing character: There is no á in font cmr10!
+! Argument of \\ has an extra }.
+<inserted text> 
+                \par 
+<to be read again> 
+                   }
+l.39 }
+      
+? 
+Runaway argument?
+ Caixa Postal 271 -- 87301-899 -- Campo Mourão -- PR -- Brazil \email \ETC.
+! Paragraph ended before \\ was complete.
+<to be read again> 
+                   \par 
+<to be read again> 
+                   }
+l.39 }
+      
+? 
+! Undefined control sequence.
+l.41 \begin
+           {document}
+? 
+! Undefined control sequence.
+l.43 ^^I\maketitle
+                  
+? 
+! Undefined control sequence.
+l.45 ^^I\begin
+              {resumo}
+? 
+[1] )
+Output written on relatorio.pdf (1 page).

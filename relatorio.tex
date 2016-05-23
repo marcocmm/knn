@@ -46,24 +46,37 @@
 		Relata o procedimento tomado para implementar o algoritmo k-NN e os testes feitos com ele sobre um conjunto de dados.
 	\end{resumo}
 
-	\section{O Problema}\label{sec:problema}
-		
-
 	\section{O algoritmo}\label{sec:algoritmo}
+		
+		O K-nearest neighbors (k-NN) é um algoritmo de classificação inteligente que avalia os k elementos mais similares ao elemento a que se deseja classificar e então rotula-o por meio de voto majoritário. É classificado como um algoritmo de aprendizagem supervisionada, de modo que exige um conjunto de treinamento já com as respostas de cada instância de treino.
 
+		O k-NN pode calcular a proximidade de instâncias através da distância de Manhattan, distância euclidiana ou qualquer outra.
 
-		meses do ano
+		Para analisar a taxa de acertos do algoritmo, observa-se na matriz de confusão quantas instâncias o k-NN classificou corretamente e quantas o algoritmo errou. Nesses casos, utiliza-se o o conjunto de treino, o conjunto de testes controlados para obter a taxa de acerto. Abaixo segue pseudo-código do algoritmo.
 
-		1200 instâncias para o conjunto de teste com 24 características
-		teste controlado uma vez que possuem respostas
+		\begin{algorithm}[H]
+			\KwData{Conjunto de testes}
+			\KwResult{Matriz de confusão}
+			Inicializar matriz de confusão\;
+			\For{all instâncias $\in$ Conjunto de treino}{
+				distâncias = Nova lista\;
+				\For{all instâncias $\in$ Conjunto de teste}{
+					distância = Calcula a distância euclidiana\;
+					distâncias.add(distância)\;
+				}
+				Ordenar(distâncias)\;
+				Obter k menores distâncias\;
+				Calcular a classe da instância mais votada\;
+				Registrar resultado na matriz de confusão\;
+			}
+			\caption{Pseudo-código k-NN}
+		\end{algorithm}
 
-		3600 instâncias para o conjunto de treino com 24 características
-		possui resposta uma vez que é um algoritmo supervisionado, isto é
+		Obviamente em um cenário real, ao ser empregado o algoritmo k-NN, não seria possível obter a matriz de confusão, dado que não se saberia de antemão, qual a real classificação de uma instância. Nesses casos, o retorno do algoritmo é a classe a que uma determinada instância pertence. Nestes termos, eliminaria-se o laço mais externo do algoritmo e as instruções referentes a matriz de confusão.
 
-		utilizou-se a distância euclidiana
+	\section{Implementação}\label{sec:implementacao}
 
-		implementou-se em java.
-		Diagrama de classes.
+		Optou-se por implementar o algoritmo k-NN na linguagem de programação Java. A seguir, diagrama de classes modelado para mapear o problema para o computador.
 
 		\newgeometry{left=0cm,bottom=0cm,right=0cm,top=0cm}
 		\begin{landscape}
@@ -76,36 +89,84 @@
 		\end{landscape}
 		\restoregeometry
 
-		\begin{algorithm}[H]
-			\KwData{Instância de um Puzzle a ser resolvida.}
-			\KwResult{Lista do caminho percorrido para solucionar o puzzle.}
-			Insere a primeira instância na lista do caminho percorrido\;
-			\While{Puzzle não está resolvido}{
-				Obtém o última instância do caminho\;
-				Obtém os possíveis movimentos da instância\;
-				Calcula a heurística para cada possível movimento\;
-				Escolhe a instância que possui melhor heurística\;
-				Adiciona a instância ao caminho percorrido\;
-			}
-			\caption{Busca A* para resolver 8-Puzzle}
-		\end{algorithm}
+		Optou-se por utilizar a distância euclidiana como métrica, definida pela fórmula matemática a seguir:
 
+		\noindent Sejam $x$ e $y$ vetores quaisquer de tamanho igual a $n$ e $x_{i}$ e $y_{i}$ respectivamente seus elementos,
 
+		\quad\quad $Distancia = \sqrt{\sum_{i=1}^{n}(x_i - y_i)^2}$
 
-	\section{Resultados}\label{sec:resultados}
+		Para conjuntos de dados cujos elementos possuem alta discrepância entre si, faz-se necessário normalizar os dados. Optou-se por utilizar o Min-Max para normalizar os conjuntos de treino e teste. A técnica Min-Max define-se pelo que segue:
+
+		\quad\quad $Valor' = (Valor - ValorMinimo)/(ValorMaximo - ValorMinimo)$
+
+	\section{Testes}\label{sec:testes}
+
+		Foram dados dois conjuntos com respostas. As instâncias dos conjuntos referiam-se aos meses do ano. No conjunto intitulado ``teste" constavam 1200 instâncias com 24 características cada. No conjunto intitulado ``treino" haviam 3600 instâncias também com 24 características cada. A fim de testar o algoritmo implementado, apropriou-se dos conjuntos de dados disponibilizados, bem como seguiu-se o que seus respectivos títulos sugeriam.
+
+		Avaliou-se o impacto sobre a taxa de acerto quando:
 
 		\begin{itemize}
-			\item Seu algoritmo deve avaliar o desempenho para diferentes valores de k;
-			\item Gerar a matriz de confusão;
-			\item Usar a distância Euclidiana, Manhattan ou outra;
-			\item Normalizar os dados com Min-Max ou Z-score;
-			\item Separar o conjunto de treinamento (aleatoriamente) em 25\%, 50\% e 100\% dos dados de treinamento. Avaliar qual o impacto de usar mais e menos instâncias no conjunto de treinamento.
+			\item Variando-se o valor para $k$;
+			\item Normalizando ou não os conjuntos;
+			\item Selecionando partes aleatórias do conjunto de treinamento por meio de porcentagem.
 		\end{itemize}
 
+		Combinou-se os itens supracitados de variadas formas sob vários testes a fim de poder-se analisar o impacto das combinações possíveis para sa execução.
+		
+		Dado que os resultados obtidos não ultrapassaram a casa dos 60\% de acerto, observou-se que as taxas de acerto 
+		mostraram-se consideravelmente baixas, todavia, não é possível inferir que o algoritmo, ou até mesmo a presente implementação foram ruins, uma vez que as características podem não ter sido bem escolhidas.
 
+		Variando-se os valores para $k$ no conjunto dado, observou-se que as taxas diminuiam a medida que aumentava-se o valor para $k$.
+
+		Normalizando-se o conjunto, observava-se que, ainda que $k$ fosse variado, as taxas sutilmente diminuiam (para espanto dos relatores) no conjunto dado.
+
+		Selecionando-se partes aleatórias do conjunto, observou-se que as taxas de acerto igualmente variavam, atingindo valores bons (porém não superiores às taxas de 100\% das instâncias) e valores ruins.
+
+		Assim, dado o fator estocástico não pôde-se avaliar com precisão o impacto direto para o algoritmo k-NN quanto a quantidade de instâncias consideradas no conjunto de treinamento e teste dados.
+
+		Segue a baixo resultados obtidos pelo k-NN:
+
+		Com 100\% das instâncias de treino.
+			Usando MinMax para normalizar.
+				k = 3:
+				k = 5:
+				k = 11:
+			Sem normalizar.
+				k = 3:
+				k = 5:
+				k = 11:
+		Com 50\% das instâncias de treino.
+			Usando MinMax para normalizar.
+				k = 3:
+				k = 5:
+				k = 11:
+			Sem normalizar.
+				k = 3:
+				k = 5:
+				k = 11:
+
+		Com 25\% das instâncias de treino.
+			Usando MinMax para normalizar.
+				k = 3:
+				k = 5:
+				k = 11:
+			Sem normalizar.
+				k = 3:
+				k = 5:
+				k = 11:
 	\section{Considerações Finais}\label{sec:consideracoesFinais}
 
+		Incapacitados de saber se as características das instâncias dadas foram bem escolhidas, torna-se impossível discutir sobre as taxas de acerto obtidas.
 		
+		Aliado ao fator estocástico e ao conjunto de instâncias e características tomadas, torna-se igualmente impossível discutir se é melhor ou pior fornecer como entrada para o algoritmo k-NN menos instâncias.
+
+		Levando-se em consideração que o escopo deste experimento não avaliou outros algoritmos para comparar as taxas de acerto, outras medidas de distância, técnicas de normalização ou ainda testes com outros conjuntos.
+
+		Posto o espectro de possibilidades supracitado, cabe considerar, portanto, a implementação do algoritmo, que pelo fato de ser muito simples e ainda ser um algoritmo com aprendizagem supervisionada, o nota-se positivamente, especialmente quando o conjunto possui classes bem distintas, onde o algoritmo poderia ser preciso (uma vez que não adicionando-se valores probabilísticos nele).
+
+		Considera-se ainda que variados valores para $k$ dependem do quão distantes encontram-se as classes no conjunto de treinamento.
+
+		No escopo deste experimento, não foram identificados padrões que pudessem ser aqui relatados.
 
 	\section{Referências}\label{sec:referencias}
 

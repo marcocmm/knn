@@ -43,15 +43,6 @@ public final class Conjunto implements Iterable<Instancia> {
         }
     }
 
-    @Deprecated
-    private Conjunto(int quantidadeInstancias, int quantidadeCaracteristicas) {
-        this.instancias = new Instancia[quantidadeInstancias];
-        this.quantidadeCaracteristicas = quantidadeCaracteristicas;
-        for (int i = 0; i < this.instancias.length; i++) {
-            this.instancias[i] = new Instancia(new Caracteristica[quantidadeCaracteristicas]);
-        }
-    }
-
     public void normalizarMinMax() {
         Caracteristica[][] listMinMax = new Caracteristica[2][getQuantidadeCaracteristicas()];
         int index = 0;
@@ -65,6 +56,7 @@ public final class Conjunto implements Iterable<Instancia> {
             index = 0;
             for (Caracteristica caracteristica : instancia) {
                 if (caracteristica.getValor() < listMinMax[0][index].getValor()) {
+
                     listMinMax[0][index] = caracteristica;
                 } else if (caracteristica.getValor() > listMinMax[1][index].getValor()) {
                     listMinMax[1][index] = caracteristica;
